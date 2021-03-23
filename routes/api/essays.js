@@ -15,9 +15,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
 router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
   Essay.findById(req.params.id).where({ user: req.user })
     .then(essay => res.json(essay))
-    .catch(err =>
-        res.status(404).json({ noessayfound: 'No essay found with that ID' })
-    );
+    .catch(err => res.status(404).json({ noessayfound: 'No essay found with that ID' }));
 });
 
 router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -33,6 +31,22 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   });
 
   newEssay.save().then(essay => res.json(essay));
+});
+
+router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const { errors, isValid } = validateEssayInput(req.body);
+
+  if (!isValid) return res.status(400).json(errors);
+
+  Essay.findById(req.params.id).where({ user: req.user })
+    .then(essay => {
+      essay.subject = req.body.subject;
+      essay.theme = req.body.theme;
+      essay.body = req.body.body;
+
+      essay.save().then(essay => res.json(essay));
+    })
+    .catch(err => res.status(404).json({ noessayfound: 'No essay found with that ID' }));
 });
 
 module.exports = router;
