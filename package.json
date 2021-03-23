@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"hello world\""
+    "start" : "node app.js",
+    "server": "nodemon app.js"
   },
   "author": "Mark Swan",
   "license": "ISC",
