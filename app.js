@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 const users = require("./routes/api/users");
 const essays = require("./routes/api/essays");
+const reviews = require("./routes/api/reviews");
 const passport = require('passport');
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 app.use("/api/users", users);
 app.use("/api/essays", essays);
+app.use("/api/reviews", reviews);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

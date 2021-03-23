@@ -6,14 +6,14 @@ const Essay = require('../../models/Essay');
 const validateEssayInput = require('../../validation/essays');
 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Essay.find({ user: req.user })
+  Essay.find({ author: req.user })
     .sort({ date: -1 })
     .then(essays => res.json(essays))
     .catch(err => res.status(404).json({ noessaysfound: 'No essays found' }));
 });
 
 router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Essay.findOne({ _id: req.params.id, user: req.user })
+  Essay.findOne({ _id: req.params.id, author: req.user })
     .then(essay => res.json(essay))
     .catch(err => res.status(404).json({ noessayfound: 'No essay found with that ID' }));
 });
@@ -27,7 +27,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     subject: req.body.subject,
     theme: req.body.theme,
     body: req.body.body,
-    user: req.user.id
+    author: req.user.id
   });
 
   newEssay.save().then(essay => res.json(essay));
@@ -38,7 +38,7 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) 
 
   if (!isValid) return res.status(400).json(errors);
 
-  Essay.findOne({ _id: req.params.id, user: req.user })
+  Essay.findOne({ _id: req.params.id, author: req.user })
     .then(essay => {
       essay.subject = req.body.subject;
       essay.theme = req.body.theme;
@@ -50,7 +50,7 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) 
 });
 
 router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Essay.findOneAndDelete({ _id: req.params.id, user: req.user })
+  Essay.findOneAndDelete({ _id: req.params.id, author: req.user })
     .then(essay => res.json(essay))
     .catch(err => res.status(404).json({ noessayfound: 'No essay found with that ID' }));
 });
