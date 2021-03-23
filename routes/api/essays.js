@@ -7,7 +7,6 @@ const validateEssayInput = require('../../validation/essays');
 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
   Essay.find({ author: req.user })
-    .sort({ date: -1 })
     .then(essays => res.json(essays))
     .catch(err => res.status(404).json({ noessaysfound: 'No essays found' }));
 });

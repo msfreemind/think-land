@@ -7,7 +7,6 @@ const validateReviewInput = require('../../validation/reviews');
 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
   Review.find({ $or: [{ reviewee: req.user }, { reviewer: req.user }] })
-    .sort({ date: -1 })
     .then(reviews => res.json(reviews))
     .catch(err => res.status(404).json({ noreviewsfound: 'No reviews found' }));
 });
