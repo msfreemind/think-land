@@ -23,8 +23,6 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
 
   if (!isValid) return res.status(400).json(errors);
 
-  console.log(req.body.tags);
-
   const newEssay = new Essay({
     subject: req.body.subject,
     theme: req.body.theme,
