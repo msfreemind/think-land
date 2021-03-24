@@ -3,13 +3,14 @@ const router = express.Router();
 const passport = require('passport');
 
 const Essay = require('../../models/Essay');
-const Tagging = require('../../models/Tag');
+const Review = require('../../models/Review');
 const validateEssayInput = require('../../validation/essays');
 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
   Essay.find({ author: req.user }).lean()
     .populate({ path: 'author', select: 'firstName lastName -_id' })
     .populate({ path: 'tags', select: 'name -_id' })
+    .populate({ path: 'reviews', select: 'reviewer text -_id' })
     .then(essays => res.json(essays))
     .catch(err => res.status(404).json({ noessaysfound: 'No essays found' }));
 });
@@ -18,6 +19,12 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) 
   Essay.findOne({ _id: req.params.id, author: req.user }).lean()
     .then(essay => res.json(essay))
     .catch(err => res.status(404).json({ noessayfound: 'No essay found with that ID' }));
+});
+
+router.get('/:id/reviews', passport.authenticate('jwt', { session: false }), (req, res) => {
+  Review.find({ essay: req.params.id, reviewee: req.user }).lean()
+    .then(review => res.json(review))
+    .catch(err => res.status(404).json({ noreviewsfound: 'No reviews found for that essay' }));
 });
 
 router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
