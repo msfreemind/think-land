@@ -37,6 +37,10 @@ module.exports = function validateEssayInput(data) {
     errors.body = 'Body text must be 5 words or more';
   }
 
+  if (!data.tags || data.tags.length === 0) {
+    errors.body = 'Must include tags';
+  }
+
   return {
     errors,
     isValid: Object.keys(errors).length === 0

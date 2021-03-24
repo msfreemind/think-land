@@ -17,7 +17,11 @@ const EssaySchema = new Schema({
   body: {
     type: String,
     required: true
-  }
+  },
+  tags: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Tag'
+  }]
 }, {
   timestamps: true
 });

@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 
 const Essay = require('../../models/Essay');
+const Tagging = require('../../models/Tag');
 const validateEssayInput = require('../../validation/essays');
 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -22,11 +23,14 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
 
   if (!isValid) return res.status(400).json(errors);
 
+  console.log(req.body.tags);
+
   const newEssay = new Essay({
     subject: req.body.subject,
     theme: req.body.theme,
     body: req.body.body,
-    author: req.user.id
+    author: req.user.id,
+    tags: req.body.tags.split(", ")
   });
 
   newEssay.save().then(essay => res.json(essay));
