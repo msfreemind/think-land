@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-export default class EssayIndex extends Component {
+class EssayIndex extends React.Component {
   render() {
     return (
       <div>
-        ESSAYS!
+        ESSAYS!aa
       </div>
     )
   }
 }
+
+export default EssayIndex;
