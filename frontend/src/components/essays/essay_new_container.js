@@ -2,8 +2,12 @@ import { connect } from 'react-redux';
 import { createEssay } from '../../actions/essay_actions';
 import EssayForm from './essay_form';
 
-const mapDispatchToProps = dispatch => ({
-  createEssay: essay => dispatch(createEssay(essay))
+const mapStateToProps = () => ({
+  actionType: "new"
 });
 
-export default connect(null, mapDispatchToProps)(EssayForm);
+const mapDispatchToProps = dispatch => ({
+  processForm: essay => dispatch(createEssay(essay))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EssayForm);

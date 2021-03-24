@@ -3,10 +3,23 @@ import React from 'react';
 class EssayForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({ subject: "", theme: "", body: "", tags: "605a89eaeaca82b33f7e74a6" });
+    this.state = ({ id: "", subject: "", theme: "", body: "", tags: "605a89eaeaca82b33f7e74a6" });
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.fetchEssay) {
+      this.props.fetchEssay(this.props.match.params.essayId).then(
+        () => this.populateState()
+      );
+    }
+  }
+
+  populateState() {
+    const { essay } = this.props;
+    this.setState({ id: this.props.match.params.essayId, subject: essay.subject, theme: essay.theme, body: essay.body });
   }
 
   handleInput(event) {
@@ -16,7 +29,7 @@ class EssayForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    this.props.createEssay(this.state).then(
+    this.props.processForm(this.state).then(
       () => {
         if (!this.props.errors) this.props.history.push('/')    
       }
@@ -24,9 +37,11 @@ class EssayForm extends React.Component {
   }
 
   render() {
+    const headerText = this.props.actionType === "new" ? "New Essay" : "Edit Essay";
+
     return (
       <div className="form-container">
-        <h1>New Essay</h1>
+        <h1>{ headerText }</h1>
 
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Subject" onChange={this.handleInput} id="subject" value={this.state.subject}/>

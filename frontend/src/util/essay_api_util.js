@@ -13,7 +13,7 @@ export const postEssay = essay => {
 };
 
 export const putEssay = essay => {
-  return axios.put('/api/essays', essay);
+  return axios.put(`/api/essays/${essay.id}`, essay);
 };
 
 export const deleteEssay = essayId => {
