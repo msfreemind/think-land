@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const EssayIndexItem = ({ essay }) => {
   return (
     <li>
-      <Link to={ `/essays/${essay.id}` }>{ essay.theme }</Link>
+      <Link to={ `/essays/${essay._id}` }>{ essay.theme }</Link>
     </li>
   );
 }

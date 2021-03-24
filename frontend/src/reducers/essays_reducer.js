@@ -9,10 +9,10 @@ const essaysReducer = (state = [], action) => {
       return action.essays;
 
     case RECEIVE_ESSAY:
-      return nextState.push(action.essay);
+      return [action.essay];
 
     case REMOVE_ESSAY:
-      delete nextState[action.essay.id];
+      delete nextState[action.essay._id];
       return nextState;
       
     default:
