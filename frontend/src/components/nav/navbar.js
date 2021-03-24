@@ -20,7 +20,7 @@ class NavBar extends React.Component {
       return (
         <div>
           <Link to={'/'}>Essays</Link>
-          <Link to={'/new_essay'}>New Essay</Link>
+          <Link to={'/essays/new'}>New Essay</Link>
           <button onClick={this.logout}>Logout</button>
         </div>
       );

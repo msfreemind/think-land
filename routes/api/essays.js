@@ -8,6 +8,8 @@ const validateEssayInput = require('../../validation/essays');
 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
   Essay.find({ author: req.user }).lean()
+    .populate({ path: 'author', select: 'firstName lastName -_id' })
+    .populate({ path: 'tags', select: 'name -_id' })
     .then(essays => res.json(essays))
     .catch(err => res.status(404).json({ noessaysfound: 'No essays found' }));
 });
