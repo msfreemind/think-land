@@ -6,13 +6,17 @@ const Review = require('../../models/Review');
 const validateReviewInput = require('../../validation/reviews');
 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Review.find({ $or: [{ reviewee: req.user }, { reviewer: req.user }] })
+  Review.find({ $or: [{ reviewee: req.user }, { reviewer: req.user }] }).lean()
+    .populate({ path: 'reviewee', select: 'firstName lastName' })
+    .populate({ path: 'reviewer', select: 'firstName lastName' })
     .then(reviews => res.json(reviews))
     .catch(err => res.status(404).json({ noreviewsfound: 'No reviews found' }));
 });
 
 router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Review.findOne({ $or: [{ _id: req.params.id, reviewee: req.user }, { _id: req.params.id, reviewer: req.user }] })
+  Review.findOne({ $or: [{ _id: req.params.id, reviewee: req.user }, { _id: req.params.id, reviewer: req.user }] }).lean()
+    .populate({ path: 'reviewee', select: 'firstName lastName' })
+    .populate({ path: 'reviewer', select: 'firstName lastName' })
     .then(review => res.json(review))
     .catch(err => res.status(404).json({ noreviewfound: 'No review found with that ID' }));
 });
