@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 class EssayForm extends React.Component {
   constructor(props) {
@@ -7,6 +9,7 @@ class EssayForm extends React.Component {
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setBody = this.setBody.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +39,10 @@ class EssayForm extends React.Component {
     );
   }
 
+  setBody(value) {
+    this.setState({ body: value });
+  }
+
   render() {
     const headerText = this.props.actionType === "new" ? "New Essay" : "Edit Essay";
 
@@ -52,13 +59,7 @@ class EssayForm extends React.Component {
 
           <br/>
 
-          <textarea 
-            onChange={this.handleInput}  
-            id="body" 
-            cols="30" 
-            rows="10" 
-            value={this.state.body}
-          />
+          <ReactQuill theme="snow" onChange={this.setBody} value={this.state.body}/>
 
           <br/>
 

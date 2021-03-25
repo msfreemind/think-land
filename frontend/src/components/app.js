@@ -10,6 +10,8 @@ import EssayNewContainer from './essays/essay_new_container';
 import EssayEditContainer from './essays/essay_edit_container';
 
 import ReviewShowContainer from './reviews/review_show_container';
+import ReviewNewContainer from './reviews/review_new_container';
+import ReviewEditContainer from './reviews/review_edit_container';
 
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
@@ -23,6 +25,8 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
+      <ProtectedRoute path="/reviews/new" component={ReviewNewContainer} /> 
+      <ProtectedRoute path="/reviews/edit/:reviewId" component={ReviewEditContainer} /> 
       <ProtectedRoute path="/reviews/:reviewId" component={ReviewShowContainer} /> 
 
       <ProtectedRoute exact path="/essays/new" component={EssayNewContainer} />
