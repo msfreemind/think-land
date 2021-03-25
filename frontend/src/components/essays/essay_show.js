@@ -1,5 +1,7 @@
 import React from 'react';
 import ReviewIndexItem from '../reviews/review_index_item';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.bubble.css';
 
 class EssayShow extends React.Component {
   componentDidMount() {
@@ -14,7 +16,7 @@ class EssayShow extends React.Component {
         <div>
           <h1>{ essay.subject }</h1>
           <h2>{ essay.theme }</h2>
-          <p>{ essay.body }</p>
+          <ReactQuill value={essay.body} readOnly={true} theme={"bubble"}/>
 
           <h1>Reviews</h1>
           <ul>

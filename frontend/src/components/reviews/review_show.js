@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.bubble.css';
 
 class ReviewShow extends React.Component {
   componentDidMount() {
@@ -15,7 +17,7 @@ class ReviewShow extends React.Component {
           <br/>
           <strong>Reviewed By: { `${review.reviewer.firstName} ${review.reviewer.lastName}` }</strong>
           <br/>
-          <p>{ review.text }</p>         
+          <ReactQuill value={review.text} readOnly={true} theme={"bubble"}/>         
         </div>
       );
     } else {
