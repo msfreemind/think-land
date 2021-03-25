@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { updateEssay, fetchEssay } from '../../actions/essay_actions';
 import EssayForm from './essay_form';
 
-const mapStateToProps = state => ({
-  essay: state.entities.essays[0],
+const mapStateToProps = (state, ownProps) => ({
+  essay: state.entities.essays[ownProps.match.params.essayId],
   actionType: "edit"
 });
 
