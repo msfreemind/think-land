@@ -1,4 +1,5 @@
 import React from 'react';
+import ReviewIndexItem from '../reviews/review_index_item';
 
 class EssayShow extends React.Component {
   componentDidMount() {
@@ -14,6 +15,11 @@ class EssayShow extends React.Component {
           <h1>{ essay.subject }</h1>
           <h2>{ essay.theme }</h2>
           <p>{ essay.body }</p>
+
+          <h1>Reviews</h1>
+          <ul>
+            { essay.reviews.map((review, idx) => <ReviewIndexItem key={idx} review={review}/>) }
+          </ul>          
         </div>
       );
     } else {

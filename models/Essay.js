@@ -21,6 +21,10 @@ const EssaySchema = new Schema({
   tags: [{
     type: Schema.Types.ObjectId,
     ref: 'Tag'
+  }],
+  reviews: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Review'
   }]
 }, {
   timestamps: true

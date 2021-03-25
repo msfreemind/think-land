@@ -30,6 +30,12 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   });
 
   newReview.save().then(review => res.json(review));
+
+  Essay.findOne({ _id: req.body.essayId })
+    .then(essay => {
+      essay.reviews.push(newReview._id);
+      essay.save().then(essay => res.json(essay));
+    })
 });
 
 router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
