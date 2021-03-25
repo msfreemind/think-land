@@ -1,12 +1,14 @@
 import React from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({ id: "", text: "" });
 
-    this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setText = this.setText.bind(this);
   }
 
   componentDidMount() {
@@ -22,10 +24,6 @@ class ReviewForm extends React.Component {
     this.setState({ id: this.props.match.params.reviewId, text: review.text });
   }
 
-  handleInput(event) {
-    this.setState({ [event.target.id]: event.target.value });
-  }
-
   handleSubmit(event) {
     event.preventDefault();
 
@@ -36,6 +34,22 @@ class ReviewForm extends React.Component {
     );
   }
 
+  setText(value) {
+    this.setState({ text: value });
+  }
+
+  modules = {
+    toolbar: [
+      [{'font': []}],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      ['bold', 'italic', 'underline','strike', 'blockquote'],
+      [{ 'align': [] }, {'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+      [{ 'color': [] }, { 'background': [] }],
+      [{ 'header': 1 }, { 'header': 2 }],
+      ['clean']
+    ],
+  }
+
   render() {
     const headerText = this.props.actionType === "new" ? "New Review" : "Edit Review";
 
@@ -44,13 +58,7 @@ class ReviewForm extends React.Component {
         <h1>{ headerText }</h1>
 
         <form onSubmit={this.handleSubmit}>
-          <textarea 
-            onChange={this.handleInput}  
-            id="text" 
-            cols="30" 
-            rows="10" 
-            value={this.state.text}
-          />
+          <ReactQuill theme="snow" modules={this.modules} onChange={this.setText} value={this.state.text}/>
 
           <br/>
 

@@ -43,6 +43,18 @@ class EssayForm extends React.Component {
     this.setState({ body: value });
   }
 
+  modules = {
+    toolbar: [
+      [{'font': []}],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      ['bold', 'italic', 'underline','strike', 'blockquote'],
+      [{ 'align': [] }, {'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+      [{ 'color': [] }, { 'background': [] }],
+      [{ 'header': 1 }, { 'header': 2 }],
+      ['clean']
+    ],
+  }
+
   render() {
     const headerText = this.props.actionType === "new" ? "New Essay" : "Edit Essay";
 
@@ -59,7 +71,7 @@ class EssayForm extends React.Component {
 
           <br/>
 
-          <ReactQuill theme="snow" onChange={this.setBody} value={this.state.body}/>
+          <ReactQuill theme="snow" modules={this.modules} onChange={this.setBody} value={this.state.body}/>
 
           <br/>
 
