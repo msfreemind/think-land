@@ -46,7 +46,7 @@ class EssayForm extends React.Component {
     event.preventDefault();
 
     this.props.createEssay(this.state).then(() => {
-      if (!this.props.errors) {
+      if (this.isEmpty(this.props.essayErrors)) {
         this.props.destroyDraft(this.state.id);
         this.props.history.push('/');
       }
@@ -64,13 +64,19 @@ class EssayForm extends React.Component {
 
     this.autoSaveTimeout = window.setTimeout(() => {
       this.saveDraft(this.state).then(() => {
-        const { draft } = this.props;
-        this.setState({ id: draft._id });
-      });
+        if (this.isEmpty(this.props.draftErrors)) {
+          const { draft } = this.props;
+          this.setState({ id: draft._id });
 
-      this.saveDraft = this.props.updateDraft;
-      this.setState({ draftMessage: "Saved!" });
+          this.saveDraft = this.props.updateDraft;
+          this.setState({ draftMessage: "Draft Saved!" });
+        }
+      });
     }, 5000);
+  }
+
+  isEmpty(obj) {
+    return Object.keys(obj).length === 0;
   }
 
   modules = {
@@ -86,33 +92,44 @@ class EssayForm extends React.Component {
   }
 
   render() {
-    return (
-      <div className="form-container">
-        <h1>New Essay</h1>
-
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Subject" onChange={this.handleInput} id="subject" value={this.state.subject}/>
-
-          <br/>
-
-          <input type="text" placeholder="Theme" onChange={this.handleInput} id="theme" value={this.state.theme}/>
-
-          <br/>
-
-          <ReactQuill theme="snow" modules={this.modules} onChange={this.setBody} value={this.state.body}/>
-
-          <br/>
-
-          { this.state.draftMessage }
-
-          <br/>
-
-          {/* <select name="" id=""></select> */}
-
-          <button>Submit Essay</button>
-        </form>
-      </div>
-    )
+    if (this.props.actionType === "new" || (this.props.actionType === "edit" && this.props.draft)) {
+      return (
+        <div className="form-container">
+          <h1>New Essay</h1>
+  
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" placeholder="Subject" onChange={this.handleInput} id="subject" value={this.state.subject}/>
+            {this.props.essayErrors.subject}
+            {this.props.draftErrors.subject}
+  
+            <br/>
+  
+            <input type="text" placeholder="Theme" onChange={this.handleInput} id="theme" value={this.state.theme}/>
+            {this.props.essayErrors.theme}
+            {this.props.draftErrors.theme}
+  
+            <br/>
+  
+            <ReactQuill theme="snow" modules={this.modules} onChange={this.setBody} value={this.state.body}/>
+            {this.props.essayErrors.body}
+  
+            <br/>
+  
+            { this.state.draftMessage }
+  
+            <br/>
+  
+            {/* <select name="" id=""></select> */}
+  
+            <button>Submit Essay</button>
+          </form>
+        </div>
+      )
+    } else {
+     return (
+      <div></div>
+     );
+    }    
   } 
 };
 

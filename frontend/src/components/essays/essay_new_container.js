@@ -4,6 +4,8 @@ import { clearActiveDraft, createDraft, destroyDraft, updateDraft } from '../../
 import EssayForm from './essay_form';
 
 const mapStateToProps = state => ({
+  draftErrors: state.errors.drafts,
+  essayErrors: state.errors.essays,
   draft: state.entities.activeDraft,
   actionType: "new"
 });
