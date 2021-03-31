@@ -53,7 +53,6 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) 
 
   Review.findOne({ _id: req.params.id, reviewer: req.user })
     .then(review => {
-      console.log(req.body)
       review.text = req.body.text;
       review.submitted = req.body.submitted;
       review.save().then(review => res.json(review));
