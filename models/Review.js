@@ -17,6 +17,10 @@ const ReviewSchema = new Schema({
   text: {
     type: String,
     required: true
+  },
+  submitted: { 
+    type: Boolean, 
+    required: true
   }
 }, {
   timestamps: true

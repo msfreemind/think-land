@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 
 const Review = require('../../models/Review');
+const Essay = require('../../models/Essay');
 const validateReviewInput = require('../../validation/reviews');
 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -30,16 +31,19 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     text: req.body.text,
     essay: req.body.essayId,
     reviewee: req.body.revieweeId,
-    reviewer: req.user.id
+    reviewer: req.user.id,
+    submitted: req.body.submitted
   });
 
   newReview.save().then(review => res.json(review));
 
-  Essay.findOne({ _id: req.body.essayId })
+  if (req.body.submitted) {
+    Essay.findOne({ _id: req.body.essayId })
     .then(essay => {
       essay.reviews.push(newReview._id);
-      essay.save().then(essay => res.json(essay));
+      essay.save();
     })
+  }  
 });
 
 router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -49,8 +53,18 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) 
 
   Review.findOne({ _id: req.params.id, reviewer: req.user })
     .then(review => {
+      console.log(req.body)
       review.text = req.body.text;
+      review.submitted = req.body.submitted;
       review.save().then(review => res.json(review));
+
+      if (req.body.submitted) {
+        Essay.findOne({ _id: req.body.essayId })
+        .then(essay => {
+          essay.reviews.push(review._id);
+          essay.save();
+        })
+      }
     })
     .catch(err => res.status(404).json({ noreviewfound: 'No review found with that ID' }));
 });
