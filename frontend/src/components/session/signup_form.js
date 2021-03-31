@@ -24,9 +24,13 @@ class SignupForm extends React.Component {
 
     this.props.signup(this.state).then(
       () => {
-        if (!this.props.errors) this.props.history.push('/')    
+        if (this.isEmpty(this.props.errors)) this.props.history.push('/')    
       }
     );
+  }
+
+  isEmpty(obj) {
+    return Object.keys(obj).length === 0;
   }
 
   render() {
@@ -35,27 +39,28 @@ class SignupForm extends React.Component {
         <h1>Sign up</h1>
 
         <form onSubmit={this.handleSubmit}>
-          <ul className="session-errors">
-            {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
-
           <input type="text" placeholder="Email" onChange={this.handleInput} id="email" value={this.state.email}/>
+          {this.props.errors.email}
 
           <br/>
           
           <input type="text" placeholder="First Name" onChange={this.handleInput} id="firstName" value={this.state.firstName}/>
+          {this.props.errors.firstName}
 
           <br/>
 
           <input type="text" placeholder="Last Name" onChange={this.handleInput} id="lastName" value={this.state.lastName}/>
+          {this.props.errors.lastName}
 
           <br/>
 
           <input type="password" placeholder="Password" onChange={this.handleInput} id="password" value={this.state.password}/>
+          {this.props.errors.password}
 
           <br/>
 
           <input type="password" placeholder="Confirm Password" onChange={this.handleInput} id="password2" value={this.state.password2}/>
+          {this.props.errors.password2}
 
           <br/>
 

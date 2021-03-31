@@ -18,9 +18,13 @@ class LoginForm extends React.Component {
 
     this.props.login(this.state).then(
       () => {
-        if (!this.props.errors) this.props.history.push('/')    
+        if (this.isEmpty(this.props.errors)) this.props.history.push('/')    
       }
     );
+  }
+
+  isEmpty(obj) {
+    return Object.keys(obj).length === 0;
   }
 
   render() {
@@ -29,15 +33,14 @@ class LoginForm extends React.Component {
         <h1>Sign In</h1>
 
         <form onSubmit={this.handleSubmit}>
-          <ul className="session-errors">
-            {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
 
           <input type="text" placeholder="Email" onChange={this.handleInput} id="email" value={this.state.email}/>
+          {this.props.errors.email}
 
           <br/>
 
           <input type="password" placeholder="Password" onChange={this.handleInput} id="password" value={this.state.password}/>
+          {this.props.errors.password}
 
           <br/>
 
