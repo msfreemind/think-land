@@ -1,13 +1,19 @@
 import { connect } from 'react-redux';
 import { createEssay } from '../../actions/essay_actions';
+import { clearActiveDraft, createDraft, destroyDraft, updateDraft } from '../../actions/draft_actions';
 import EssayForm from './essay_form';
 
-const mapStateToProps = () => ({
+const mapStateToProps = state => ({
+  draft: state.entities.activeDraft,
   actionType: "new"
 });
 
 const mapDispatchToProps = dispatch => ({
-  processForm: essay => dispatch(createEssay(essay))
+  createEssay: essay => dispatch(createEssay(essay)),
+  createDraft: draft => dispatch(createDraft(draft)),
+  updateDraft: draft => dispatch(updateDraft(draft)),
+  destroyDraft: draftId => dispatch(destroyDraft(draftId)),
+  clearActiveDraft: () => dispatch(clearActiveDraft())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EssayForm);

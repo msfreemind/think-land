@@ -5,42 +5,72 @@ import 'react-quill/dist/quill.snow.css';
 class EssayForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({ id: "", subject: "", theme: "", body: "", tags: "605a89eaeaca82b33f7e74a6" });
+    this.state = ({
+      id: "",
+      subject: "", 
+      theme: "", 
+      body: "", 
+      tags: "605a89eaeaca82b33f7e74a6",
+      draftMessage: ""
+    });
+
+    this.autoSaveTimeout = null;
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setBody = this.setBody.bind(this);
+    this.saveDraft = this.props.createDraft || this.props.updateDraft;
   }
 
   componentDidMount() {
-    if (this.props.fetchEssay) {
-      this.props.fetchEssay(this.props.match.params.essayId).then(
+    if (this.props.actionType === "new") {
+      this.props.clearActiveDraft();
+    } else {
+      this.props.fetchDraft(this.props.match.params.draftId).then(
         () => this.populateState()
       );
     }
   }
 
   populateState() {
-    const { essay } = this.props;
-    this.setState({ id: this.props.match.params.essayId, subject: essay.subject, theme: essay.theme, body: essay.body });
+    const { draft } = this.props;
+    this.setState({ id: draft._id, subject: draft.subject, theme: draft.theme, body: draft.body });
   }
 
   handleInput(event) {
     this.setState({ [event.target.id]: event.target.value });
+    this.initAutoSave();
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-    this.props.processForm(this.state).then(
-      () => {
-        if (!this.props.errors) this.props.history.push('/')    
+    this.props.createEssay(this.state).then(() => {
+      if (!this.props.errors) {
+        this.props.destroyDraft(this.state.id);
+        this.props.history.push('/');
       }
-    );
+    });
   }
 
   setBody(value) {
     this.setState({ body: value });
+    this.initAutoSave();
+  }
+
+  initAutoSave() {
+    window.clearTimeout(this.autoSaveTimeout);
+    this.setState({ draftMessage: "" });
+
+    this.autoSaveTimeout = window.setTimeout(() => {
+      this.saveDraft(this.state).then(() => {
+        const { draft } = this.props;
+        this.setState({ id: draft._id });
+      });
+
+      this.saveDraft = this.props.updateDraft;
+      this.setState({ draftMessage: "Saved!" });
+    }, 5000);
   }
 
   modules = {
@@ -56,11 +86,9 @@ class EssayForm extends React.Component {
   }
 
   render() {
-    const headerText = this.props.actionType === "new" ? "New Essay" : "Edit Essay";
-
     return (
       <div className="form-container">
-        <h1>{ headerText }</h1>
+        <h1>New Essay</h1>
 
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Subject" onChange={this.handleInput} id="subject" value={this.state.subject}/>
@@ -72,6 +100,10 @@ class EssayForm extends React.Component {
           <br/>
 
           <ReactQuill theme="snow" modules={this.modules} onChange={this.setBody} value={this.state.body}/>
+
+          <br/>
+
+          { this.state.draftMessage }
 
           <br/>
 

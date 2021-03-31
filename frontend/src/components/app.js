@@ -30,7 +30,7 @@ const App = () => (
       <ProtectedRoute path="/reviews/:reviewId" component={ReviewShowContainer} /> 
 
       <ProtectedRoute exact path="/essays/new" component={EssayNewContainer} />
-      <ProtectedRoute path="/essays/edit/:essayId" component={EssayEditContainer} />
+      <ProtectedRoute path="/essays/edit/:draftId" component={EssayEditContainer} />
       <ProtectedRoute path="/essays/:essayId" component={EssayShowContainer} />      
     </Switch>
   </div>
