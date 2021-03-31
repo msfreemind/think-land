@@ -4,6 +4,8 @@ import { Switch } from 'react-router-dom';
 
 import NavBarContainer from './nav/navbar_container';
 
+import DraftIndexContainer from './essays/draft_index_container';
+
 import EssayIndexContainer from './essays/essay_index_container';
 import EssayShowContainer from './essays/essay_show_container';
 import EssayNewContainer from './essays/essay_new_container';
@@ -24,6 +26,8 @@ const App = () => (
 
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
+
+      <ProtectedRoute exact path="/essays/drafts" component={DraftIndexContainer} />
 
       <ProtectedRoute path="/essays/:essayId/reviews/new" component={ReviewNewContainer} /> 
       <ProtectedRoute path="/reviews/edit/:reviewId" component={ReviewEditContainer} /> 
