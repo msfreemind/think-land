@@ -18,7 +18,7 @@ class LoginForm extends React.Component {
 
     this.props.login(this.state).then(
       () => {
-        if (this.isEmpty(this.props.errors)) this.props.history.push('/')    
+        if (this.isEmpty(this.props.errors)) this.props.history.push('/essays')    
       }
     );
   }
@@ -36,8 +36,6 @@ class LoginForm extends React.Component {
 
           <input type="text" placeholder="Email" onChange={this.handleInput} id="email" value={this.state.email}/>
           {this.props.errors.email}
-
-          <br/>
 
           <input type="password" placeholder="Password" onChange={this.handleInput} id="password" value={this.state.password}/>
           {this.props.errors.password}

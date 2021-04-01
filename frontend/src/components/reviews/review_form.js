@@ -45,7 +45,7 @@ class ReviewForm extends React.Component {
 
     this.setState({ submitted: true }, () => {
       this.saveReview(this.state).then(() => {
-        if (this.isEmpty(this.props.errors)) this.props.history.push('/')
+        if (this.isEmpty(this.props.errors)) this.props.history.push('/reviews')
         else this.setState({ submitted: false })  
       })
     });    
@@ -92,7 +92,7 @@ class ReviewForm extends React.Component {
   render() {
     if (this.props.actionType === "new" || (this.props.actionType === "edit" && this.state.formDataLoaded)) {
       return (
-        <div className="form-container">
+        <div className="form-container col col-7-8">
           <h1>New Review</h1>
   
           <form onSubmit={this.handleSubmit}>

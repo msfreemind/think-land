@@ -1,0 +1,21 @@
+.main {
+  padding-top: 78px;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.index {
+  padding-left: 20px;
+  /* display: flex;
+  justify-content: center; */
+}
+
+.index h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.index-item {
+  margin-bottom: 15px;
+}

@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 const EssayIndexItem = ({ essay }) => {
   return (
-    <li>
-      <Link to={ `/essays/${essay._id}` }>{ essay.theme }</Link>
+    <li className="index-item">
+      <Link to={ `/essays/${essay._id}` }><h2>{ essay.theme }</h2></Link>
+      <small>Review: Blah, by James Bond</small>
     </li>
   );
 }

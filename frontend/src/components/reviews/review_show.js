@@ -12,7 +12,7 @@ class ReviewShow extends React.Component {
 
     if (review) {
       return (
-        <div>
+        <div className="col col-7-8">
           <strong>Essay Author: { `${review.reviewee.firstName} ${review.reviewee.lastName}` }</strong>
           <br/>
           <strong>Reviewed By: { `${review.reviewer.firstName} ${review.reviewer.lastName}` }</strong>

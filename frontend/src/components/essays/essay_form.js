@@ -48,7 +48,7 @@ class EssayForm extends React.Component {
     this.props.createEssay(this.state).then(() => {
       if (this.isEmpty(this.props.essayErrors)) {
         this.props.destroyDraft(this.state.id);
-        this.props.history.push('/');
+        this.props.history.push('/essays');
       }
     });
   }
@@ -94,7 +94,7 @@ class EssayForm extends React.Component {
   render() {
     if (this.props.actionType === "new" || (this.props.actionType === "edit" && this.props.draft)) {
       return (
-        <div className="form-container">
+        <div className="col col-7-8 form-container">
           <h1>New Essay</h1>
   
           <form onSubmit={this.handleSubmit}>

@@ -8,7 +8,7 @@ class DraftIndex extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="index col col-7-8">
         <ul>
           { this.props.drafts.map((draft, idx) => <DraftIndexItem key={idx} draft={draft}/>) }
         </ul>

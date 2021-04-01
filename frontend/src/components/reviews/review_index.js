@@ -8,7 +8,7 @@ class ReviewIndex extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="index col col-7-8">
         <ul>
           { this.props.reviews.map((review, idx) => <ReviewIndexItem key={idx} review={review}/>) }
         </ul>

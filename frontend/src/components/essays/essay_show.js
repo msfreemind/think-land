@@ -13,7 +13,7 @@ class EssayShow extends React.Component {
 
     if (essay) {
       return (
-        <div>
+        <div className="col col-7-8">
           <h1>{ essay.subject }</h1>
           <h2>{ essay.theme }</h2>
           <ReactQuill value={essay.body} readOnly={true} theme={"bubble"}/>

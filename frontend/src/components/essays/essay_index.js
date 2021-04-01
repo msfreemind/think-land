@@ -8,7 +8,7 @@ class EssayIndex extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="index col col-7-8">
         <ul>
           { this.props.essays.map((essay, idx) => <EssayIndexItem key={idx} essay={essay}/>) }
         </ul>
