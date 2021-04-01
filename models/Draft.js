@@ -15,10 +15,10 @@ const DraftSchema = new Schema({
   body: {
     type: String
   },
-  tags: [{
+  category: {
     type: Schema.Types.ObjectId,
-    ref: 'Tag'
-  }]
+    ref: 'Category'
+  }
 }, {
   timestamps: true
 });

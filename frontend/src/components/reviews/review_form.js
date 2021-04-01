@@ -70,7 +70,7 @@ class ReviewForm extends React.Component {
           this.setState({ draftMessage: "Draft Saved!" });
         }
       });
-    }, 5000);
+    }, 4000);
   }
 
   isEmpty(obj) {
@@ -104,8 +104,6 @@ class ReviewForm extends React.Component {
             { this.state.draftMessage }
   
             <br/>
-  
-            {/* <select name="" id=""></select> */}
   
             <button>Submit Review</button>
           </form>

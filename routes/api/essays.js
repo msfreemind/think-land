@@ -8,7 +8,7 @@ const validateEssayInput = require('../../validation/essays');
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
   Essay.find({ author: req.user }).lean()
     .populate({ path: 'author', select: 'firstName lastName' })
-    .populate({ path: 'tags', select: 'name' })
+    .populate({ path: 'category', select: 'name' })
     .populate({ path: 'reviews', select: 'text', populate: { path: 'reviewer', select: 'firstName lastName'} })
     .then(essays => res.json(essays))
     .catch(err => res.status(404).json({ noessaysfound: 'No essays found' }));
@@ -17,7 +17,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
 router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
   Essay.findOne({ _id: req.params.id, author: req.user }).lean()
     .populate({ path: 'author', select: 'firstName lastName' })
-    .populate({ path: 'tags', select: 'name' })
+    .populate({ path: 'category', select: 'name' })
     .populate({ path: 'reviews', select: 'text', populate: { path: 'reviewer', select: 'firstName lastName'} })
     .then(essay => res.json(essay))
     .catch(err => res.status(404).json({ noessayfound: 'No essay found with that ID' }));
@@ -33,7 +33,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     theme: req.body.theme,
     body: req.body.body,
     author: req.user.id,
-    tags: req.body.tags.split(", "),
+    category: req.body.category,
     reviews: []
   });
 

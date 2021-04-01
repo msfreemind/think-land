@@ -8,7 +8,7 @@ const validateDraftInput = require('../../validation/drafts');
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
   Draft.find({ author: req.user }).lean()
     .populate({ path: 'author', select: 'firstName lastName' })
-    .populate({ path: 'tags', select: 'name' })
+    .populate({ path: 'category', select: 'name' })
     .then(drafts => res.json(drafts))
     .catch(err => res.status(404).json({ nodraftsfound: 'No drafts found' }));
 });
@@ -16,7 +16,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
 router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
   Draft.findOne({ _id: req.params.id, author: req.user }).lean()
     .populate({ path: 'author', select: 'firstName lastName' })
-    .populate({ path: 'tags', select: 'name' })
+    .populate({ path: 'category', select: 'name' })
     .then(draft => res.json(draft))
     .catch(err => res.status(404).json({ nodraftfound: 'No draft found with that ID' }));
 });
@@ -31,7 +31,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     theme: req.body.theme,
     body: req.body.body,
     author: req.user.id,
-    tags: req.body.tags.split(", ")
+    category: req.body.category || null
   });
 
   newDraft.save().then(draft => res.json(draft));
@@ -47,6 +47,7 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) 
       draft.subject = req.body.subject;
       draft.theme = req.body.theme;
       draft.body = req.body.body;
+      draft.category = req.body.category || null;
 
       draft.save().then(draft => res.json(draft));
     })

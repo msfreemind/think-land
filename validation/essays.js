@@ -12,6 +12,7 @@ module.exports = function validateEssayInput(data) {
   data.subject = validText(data.subject) ? data.subject : '';
   data.theme = validText(data.theme) ? data.theme : '';
   data.body = validText(data.body) ? data.body : '';
+  data.category = validText(data.category) ? data.category : '';
 
   if (Validator.isEmpty(data.subject)) {
     errors.subject = 'Subject is required';
@@ -37,8 +38,8 @@ module.exports = function validateEssayInput(data) {
     errors.body = 'Body text must be 5 words or more';
   }
 
-  if (!data.tags || data.tags.length === 0) {
-    errors.body = 'Must include tags';
+  if (Validator.isEmpty(data.category)) {
+    errors.body = 'A category is required';
   }
 
   return {

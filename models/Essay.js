@@ -18,10 +18,10 @@ const EssaySchema = new Schema({
     type: String,
     required: true
   },
-  tags: [{
+  category: {
     type: Schema.Types.ObjectId,
-    ref: 'Tag'
-  }],
+    ref: 'Category'
+  },
   reviews: [{
     type: Schema.Types.ObjectId,
     ref: 'Review'

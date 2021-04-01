@@ -10,7 +10,7 @@ class EssayForm extends React.Component {
       subject: "", 
       theme: "", 
       body: "", 
-      tags: "605a89eaeaca82b33f7e74a6",
+      category: "",
       draftMessage: ""
     });
 
@@ -23,6 +23,8 @@ class EssayForm extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchCategories();
+
     if (this.props.actionType === "new") {
       this.props.clearActiveDraft();
     } else {
@@ -34,7 +36,14 @@ class EssayForm extends React.Component {
 
   populateState() {
     const { draft } = this.props;
-    this.setState({ id: draft._id, subject: draft.subject, theme: draft.theme, body: draft.body });
+
+    this.setState({ 
+      id: draft._id, 
+      subject: draft.subject, 
+      theme: draft.theme, 
+      body: draft.body,
+      category: draft.category._id
+    });
   }
 
   handleInput(event) {
@@ -72,7 +81,7 @@ class EssayForm extends React.Component {
           this.setState({ draftMessage: "Draft Saved!" });
         }
       });
-    }, 5000);
+    }, 4000);
   }
 
   isEmpty(obj) {
@@ -119,7 +128,15 @@ class EssayForm extends React.Component {
   
             <br/>
   
-            {/* <select name="" id=""></select> */}
+            <select onChange={this.handleInput} id="category" value={this.state.category}>
+              <option value="">---- Select Category ----</option>
+              {this.props.categories.map(
+                (category, idx) => <option key={idx} value={category._id}>{category.name}</option>
+              )}
+            </select>
+            {this.props.essayErrors.category}
+
+            <br/>
   
             <button>Submit Essay</button>
           </form>

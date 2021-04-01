@@ -4,7 +4,7 @@ const users = require("./routes/api/users");
 const essays = require("./routes/api/essays");
 const drafts = require("./routes/api/drafts");
 const reviews = require("./routes/api/reviews");
-const tags = require("./routes/api/tags");
+const categories = require("./routes/api/categories");
 const passport = require('passport');
 
 const app = express();
@@ -24,7 +24,7 @@ app.use("/api/users", users);
 app.use("/api/essays", essays);
 app.use("/api/drafts", drafts);
 app.use("/api/reviews", reviews);
-app.use("/api/tags", tags);
+app.use("/api/categories", categories);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
