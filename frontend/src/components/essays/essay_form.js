@@ -11,7 +11,8 @@ class EssayForm extends React.Component {
       theme: "", 
       body: "", 
       category: "",
-      draftMessage: ""
+      draftMessage: "",
+      formDataLoaded: false
     });
 
     this.autoSaveTimeout = null;
@@ -50,7 +51,8 @@ class EssayForm extends React.Component {
       subject: draft.subject, 
       theme: draft.theme, 
       body: draft.body,
-      category: draft.category ? draft.category._id : ""
+      category: draft.category ? draft.category._id : "",
+      formDataLoaded: true
     });
   }
 
@@ -110,7 +112,7 @@ class EssayForm extends React.Component {
   }
 
   render() {
-    if (this.props.actionType === "new" || (this.props.actionType === "edit" && this.props.draft)) {
+    if (this.props.actionType === "new" || (this.props.actionType === "edit" && this.state.formDataLoaded)) {
       return (
         <div className="col col-7-8 form-container">
           <h1>New Essay</h1>
