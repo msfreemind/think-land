@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+import { setMode } from '../../actions/mode_actions';
 import NavBar from './navbar';
 
 const mapStateToProps = state => ({
@@ -7,4 +8,9 @@ const mapStateToProps = state => ({
   currentUser: state.session.user
 });
 
-export default connect(mapStateToProps, { logout })(NavBar);
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout()),
+  setMode: mode => dispatch(setMode(mode))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
