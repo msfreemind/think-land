@@ -34,6 +34,14 @@ class EssayForm extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.draftId !== this.props.match.params.draftId) {
+      this.props.fetchDraft(this.props.match.params.draftId).then(
+        () => this.populateState()
+      );
+    }
+  }
+
   populateState() {
     const { draft } = this.props;
 

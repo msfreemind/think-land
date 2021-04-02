@@ -28,6 +28,14 @@ class ReviewForm extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.reviewId !== this.props.match.params.reviewId) {
+      this.props.fetchReview(this.props.match.params.reviewId).then(
+        () => this.populateState()
+      );
+    }
+  }
+
   populateState() {
     const { review } = this.props;
 
