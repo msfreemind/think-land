@@ -42,7 +42,7 @@ class EssayForm extends React.Component {
       subject: draft.subject, 
       theme: draft.theme, 
       body: draft.body,
-      category: draft.category._id
+      category: draft.category ? draft.category._id : ""
     });
   }
 
@@ -53,10 +53,11 @@ class EssayForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    window.clearTimeout(this.autoSaveTimeout);
 
     this.props.createEssay(this.state).then(() => {
       if (this.isEmpty(this.props.essayErrors)) {
-        this.props.destroyDraft(this.state.id);
+        if (this.state.id) this.props.destroyDraft(this.state.id);
         this.props.history.push('/essays');
       }
     });

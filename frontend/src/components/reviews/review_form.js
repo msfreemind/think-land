@@ -42,6 +42,7 @@ class ReviewForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    window.clearTimeout(this.autoSaveTimeout);
 
     this.setState({ submitted: true }, () => {
       this.saveReview(this.state).then(() => {
