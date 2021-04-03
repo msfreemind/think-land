@@ -1,6 +1,7 @@
 import * as APIUtil from '../util/essay_api_util';
 
 export const RECEIVE_ESSAYS = "RECEIVE_ESSAYS";
+export const RECEIVE_REVIEWABLE_ESSAYS = "RECEIVE_REVIEWABLE_ESSAYS";
 export const RECEIVE_ESSAY = "RECEIVE_ESSAY";
 export const REMOVE_ESSAY = "REMOVE_ESSAY";
 export const RECEIVE_ESSAY_ERRORS = "RECEIVE_ESSAY_ERRORS";
@@ -9,6 +10,11 @@ export const RECEIVE_ESSAY_ERRORS = "RECEIVE_ESSAY_ERRORS";
 
 export const receiveEssays = essays => ({
   type: RECEIVE_ESSAYS,
+  essays
+});
+
+export const receiveReviewableEssays = essays => ({
+  type: RECEIVE_REVIEWABLE_ESSAYS,
   essays
 });
 
@@ -32,6 +38,13 @@ export const receiveErrors = errors => ({
 export const fetchEssays = () => dispatch => {
   return APIUtil.getEssays().then(
     res => dispatch(receiveEssays(res.data)), 
+    err => dispatch(receiveErrors(err.response.data))
+  );
+};
+
+export const fetchReviewableEssays = () => dispatch => {
+  return APIUtil.getReviewableEssays().then(
+    res => dispatch(receiveReviewableEssays(res.data)), 
     err => dispatch(receiveErrors(err.response.data))
   );
 };

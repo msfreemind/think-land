@@ -8,7 +8,7 @@ const SideBar = ({ loggedIn, mode }) => {
         <div className="sidebar col col-1-8">
           <Link to={'/reviews/drafts'}>Drafts</Link>
           <Link to={'/reviews'}>Reviews</Link>
-          <Link to={'/essays/new'}>For Review</Link>
+          <Link to={'/essays/reviewables'}>For Review</Link>
         </div>
       );
     } else { // mode === "submit"

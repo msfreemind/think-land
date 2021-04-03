@@ -4,6 +4,10 @@ export const getEssays = () => {
   return axios.get('/api/essays');
 };
 
+export const getReviewableEssays = () => {
+  return axios.get('/api/essays/reviewables');
+};
+
 export const getEssay = essayId => {
   return axios.get(`/api/essays/${essayId}`);
 };

@@ -13,6 +13,7 @@ import EssayEditContainer from './essays/essay_edit_container';
 
 import ReviewIndexContainer from './reviews/review_index_container';
 import ReviewDraftIndexContainer from './reviews/draft_index_container';
+import EssaysForReviewIndexContainer from './essays/essays_for_review_index_container';
 import ReviewShowContainer from './reviews/review_show_container';
 import ReviewNewContainer from './reviews/review_new_container';
 import ReviewEditContainer from './reviews/review_edit_container';
@@ -34,7 +35,8 @@ const App = () => (
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
         <ProtectedRoute exact path="/reviews" component={ReviewIndexContainer} />
-        <ProtectedRoute exact path="/reviews/drafts" component={ReviewDraftIndexContainer} />      
+        <ProtectedRoute exact path="/reviews/drafts" component={ReviewDraftIndexContainer} />
+        <ProtectedRoute exact path="/essays/reviewables" component={EssaysForReviewIndexContainer} />
 
         <ProtectedRoute path="/essays/:essayId/reviews/new" component={ReviewNewContainer} /> 
         <ProtectedRoute path="/reviews/edit/:reviewId" component={ReviewEditContainer} /> 

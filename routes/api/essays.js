@@ -14,6 +14,15 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
     .catch(err => res.status(404).json({ noessaysfound: 'No essays found' }));
 });
 
+router.get('/reviewables', passport.authenticate('jwt', { session: false }), (req, res) => {
+  console.log(req.user);
+  Essay.find({ category: { $in: req.user.expertiseCategories } }).lean()
+    .populate({ path: 'author', select: 'firstName lastName' })
+    .populate({ path: 'category', select: 'name' })
+    .then(essays => res.json(essays))
+    .catch(err => res.status(404).json({ noessaysfound: 'No essays found' }));
+});
+
 router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
   Essay.findOne({ _id: req.params.id, author: req.user }).lean()
     .populate({ path: 'author', select: 'firstName lastName' })

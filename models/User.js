@@ -17,7 +17,11 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  expertiseCategories: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Category'
+  }]
 }, {
   timestamps: true
 });
