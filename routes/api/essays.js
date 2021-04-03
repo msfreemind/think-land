@@ -15,7 +15,6 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
 });
 
 router.get('/reviewables', passport.authenticate('jwt', { session: false }), (req, res) => {
-  console.log(req.user);
   Essay.find({ category: { $in: req.user.expertiseCategories } }).lean()
     .populate({ path: 'author', select: 'firstName lastName' })
     .populate({ path: 'category', select: 'name' })
