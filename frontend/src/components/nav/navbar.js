@@ -1,7 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.enterSubmitMode = this.enterSubmitMode.bind(this);
+    this.enterReviewMode = this.enterReviewMode.bind(this);
+  }
+
+  enterSubmitMode() {
+    this.props.setMode("submit");
+    this.props.history.push('/essays');
+  }
+
+  enterReviewMode() {
+    this.props.setMode("review");
+    this.props.history.push('/reviews');
+  }
+
   getLinks() {
     if (this.props.loggedIn) {
       return (
@@ -14,8 +30,8 @@ class NavBar extends React.Component {
             <button>{this.props.currentUser.name} &nbsp; <div className="arrow-down"/></button>
 
             <ul id="user-dropdown">
-              <li onClick={() => this.props.setMode("submit")}>Submit Mode</li>
-              <li onClick={() => this.props.setMode("review")}>Review Mode</li>
+              <li onClick={this.enterSubmitMode}>Submit Mode</li>
+              <li onClick={this.enterReviewMode}>Review Mode</li>
               <li onClick={this.props.logout}>Log Out</li>
             </ul>
           </li>
@@ -44,4 +60,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
