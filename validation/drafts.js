@@ -7,8 +7,8 @@ module.exports = function validateEssayInput(data) {
   data.subject = validText(data.subject) ? data.subject : '';
   data.theme = validText(data.theme) ? data.theme : '';
 
-  if (!Validator.isLength(data.subject, { max: 30 })) {
-    errors.subject = 'Subject must be less than 30 characters';
+  if (!Validator.isLength(data.subject, { max: 80 })) {
+    errors.subject = 'Subject must be less than 80 characters';
   }
 
   if (!Validator.isLength(data.theme, { max: 140 })) {
