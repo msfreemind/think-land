@@ -13,14 +13,19 @@ class EssayShow extends React.Component {
 
     if (essay) {
       return (
-        <div className="col col-7-8">
+        <div className="essay col col-7-8">
           <h1>{ essay.subject }</h1>
           <h2>{ essay.theme }</h2>
+          <div className="byline">
+            By: {essay.author.firstName} {essay.author.lastName} &nbsp; | &nbsp; Category: {essay.category.name}
+          </div>
           <ReactQuill value={essay.body} readOnly={true} theme={"bubble"}/>
+
+          <br/>
 
           <h1>Reviews</h1>
           <ul>
-            { essay.reviews.map((review, idx) => <ReviewIndexItem key={idx} review={review}/>) }
+            { essay.reviews.map((review, idx) => <ReviewIndexItem key={idx} num={idx} review={review}/>) }
           </ul>          
         </div>
       );

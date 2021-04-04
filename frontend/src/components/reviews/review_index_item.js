@@ -1,10 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ReviewIndexItem = ({ review }) => {
+const ReviewIndexItem = ({ num, review }) => {
   return (
     <li className="index-item">
-      <Link to={ `/reviews/${review._id}` }><h2>{ review.reviewer.lastName }</h2></Link>
+      {(num + 1) + ". "} &nbsp;
+      <Link to={ `/reviews/${review._id}` }>
+        <strong className="review">
+          {review.text.substring(0, 100).replace(/<\/?[^>]+(>|$)/g, "")}
+          {" . . ."}       
+        </strong>
+      </Link>
+      &nbsp;
+      {" — Reviewer: " + review.reviewer.firstName + " " + review.reviewer.lastName }
     </li>
   );
 }
