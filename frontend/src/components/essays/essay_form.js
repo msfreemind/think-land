@@ -122,20 +122,15 @@ class EssayForm extends React.Component {
             {this.props.essayErrors.subject}
             {this.props.draftErrors.subject}
   
-            <br/>
-  
             <input type="text" placeholder="Theme" onChange={this.handleInput} id="theme" value={this.state.theme}/>
             {this.props.essayErrors.theme}
             {this.props.draftErrors.theme}
   
-            <br/>
-  
-            <ReactQuill theme="snow" modules={this.modules} onChange={this.setBody} value={this.state.body}/>
-            {this.props.essayErrors.body}
-  
-            <br/>
-  
-            { this.state.draftMessage }
+            <div className="editor-wrapper">
+              <ReactQuill theme="snow" modules={this.modules} onChange={this.setBody} value={this.state.body}/>
+              {this.props.essayErrors.body}
+              <strong className="draft-msg">{ this.state.draftMessage }</strong>
+            </div>
   
             <br/>
   

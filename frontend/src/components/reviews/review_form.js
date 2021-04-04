@@ -105,12 +105,11 @@ class ReviewForm extends React.Component {
           <h1>New Review</h1>
   
           <form onSubmit={this.handleSubmit}>
-            <ReactQuill theme="snow" modules={this.modules} onChange={this.setText} value={this.state.text}/>
-            {this.props.errors.text}
-  
-            <br/>
-  
-            { this.state.draftMessage }
+            <div className="editor-wrapper">
+              <ReactQuill theme="snow" modules={this.modules} onChange={this.setText} value={this.state.text}/>
+              {this.props.errors.text}  
+              <strong className="draft-msg">{ this.state.draftMessage }</strong>
+            </div>
   
             <br/>
   
