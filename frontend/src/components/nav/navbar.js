@@ -55,9 +55,11 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const { mode } = this.props;
+
     return (
       <header className="header">
-        <Link to="/essays"><h1>Reason Lift!</h1></Link>
+        <Link to={mode === "submit" ? "/essays" : "/reviews"}><h1>Reason Lift!</h1></Link>
         { this.getLinks() }        
       </header>
     );   
