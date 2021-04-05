@@ -5,8 +5,8 @@ const path = {
   draftReviews: '/reviews/drafts',
   submittedReviews: '/reviews',
   essaysToReview: '/essays/reviewables',
-  draftEssays: '/essays/drafts',
-  submittedEssays: '/essays',
+  draftEssays: /^\/essays\/((\bdrafts\b)|(\bedit\b)).*$/m,
+  submittedEssays: /^\/essays\/?((?!new)(?!edit)(?!drafts).)*$/m,
   newEssay: '/essays/new'
 }
 
@@ -45,17 +45,17 @@ const SideBar = ({ loggedIn, mode }) => {
 
           <ul>
             <li>
-              <Link className={location.pathname === path.draftEssays ? "active-route" : ""} to={path.draftEssays}>
+              <Link className={location.pathname.match(path.draftEssays) ? "active-route" : ""} to='/essays/drafts'>
                 Drafts
               </Link>
             </li>
             <li>
-             <Link className={location.pathname === path.submittedEssays ? "active-route" : ""} to={path.submittedEssays}>
+             <Link className={location.pathname.match(path.submittedEssays) ? "active-route" : ""} to='/essays'>
                 Submissions
               </Link>
             </li>
             <li>
-              <Link className={location.pathname === path.newEssay ? "active-route" : ""} to={path.newEssay}>
+              <Link className={location.pathname.startsWith(path.newEssay) ? "active-route" : ""} to={path.newEssay}>
                 New Essay
               </Link>
             </li>
