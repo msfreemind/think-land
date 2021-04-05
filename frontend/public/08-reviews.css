@@ -12,7 +12,7 @@
   margin: 8px 20px 0 20px;
 }
 
-.new-review .ql-container {
+.review .ql-container, .new-review .form-container .ql-container {
   margin: 0 20px 8px 20px;
 }
 
@@ -21,7 +21,6 @@
   height: 100%;
   overflow-y: scroll;
   box-sizing: content-box;
-  padding: 0;
 }
 
 .new-review .form-container, .new-review .review {
