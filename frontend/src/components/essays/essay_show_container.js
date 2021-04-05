@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { fetchEssay } from '../../actions/essay_actions';
+import { fetchEssay, fetchReviewableEssays } from '../../actions/essay_actions';
 import EssayShow from './essay_show';
 
 const mapStateToProps = (state, ownProps) => ({
   essay: state.entities.essays[ownProps.match.params.essayId],
-  essayId: ownProps.match.params.essayId
+  showReviews: true
 });
 
 const mapDispatchToProps = dispatch => ({

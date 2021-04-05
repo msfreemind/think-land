@@ -10,6 +10,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
   Review.find({ $or: [{ reviewee: req.user }, { reviewer: req.user }] }).lean()
     .populate({ path: 'reviewee', select: 'firstName lastName' })
     .populate({ path: 'reviewer', select: 'firstName lastName' })
+    .populate({ path: 'essay', select: 'author body category subject theme' })
     .then(reviews => res.json(reviews))
     .catch(err => res.status(404).json({ noreviewsfound: 'No reviews found' }));
 });
@@ -18,6 +19,10 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) 
   Review.findOne({ $or: [{ _id: req.params.id, reviewee: req.user }, { _id: req.params.id, reviewer: req.user }] }).lean()
     .populate({ path: 'reviewee', select: 'firstName lastName' })
     .populate({ path: 'reviewer', select: 'firstName lastName' })
+    .populate({ path: 'essay', select: 'author body category subject theme', populate: [
+      { path: 'author', select: 'firstName lastName'},
+      { path: 'category', select: 'name'} 
+    ]})
     .then(review => res.json(review))
     .catch(err => res.status(404).json({ noreviewfound: 'No review found with that ID' }));
 });
