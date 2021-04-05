@@ -1,4 +1,5 @@
 import React from 'react';
+import EssayIndexItem from './essay_index_item';
 
 class EssaysForReviewIndex extends React.Component {
   componentDidMount() {
@@ -9,7 +10,7 @@ class EssaysForReviewIndex extends React.Component {
     return (
       <div className="index col col-7-8">
         <ul>
-          { this.props.reviewables.map((essay, idx) => <li key={idx}>{essay.theme + "--" + essay.category.name}</li>) }
+          { this.props.reviewables.map((essay, idx) => <EssayIndexItem key={idx} essay={essay} doReview={true}/>) }
         </ul>
       </div>
     );
