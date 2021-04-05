@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ReviewIndexItem = ({ num, review }) => {
+const ReviewIndexItem = ({ num, review, indexType }) => {
   if (num) {
     return (
       <li className="index-item">
@@ -19,7 +19,7 @@ const ReviewIndexItem = ({ num, review }) => {
   } else {
     return (
       <li className="index-item">
-        <Link to={ `/reviews/${review._id}` }>
+        <Link to={ indexType === "draft" ? `/reviews/edit/${review._id}` : `/reviews/${review._id}` }>
           <h2>
             { review.text.substring(0, 100).replace(/<\/?[^>]+(>|$)/g, "") }
             { " . . ." }
@@ -30,6 +30,6 @@ const ReviewIndexItem = ({ num, review }) => {
       </li>
     );
   }
-}
+};
 
 export default ReviewIndexItem;
