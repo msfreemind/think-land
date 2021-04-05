@@ -4,3 +4,7 @@
   background-color: rgb(128, 128, 128, 0.25);
   padding: 10px;
 }
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
