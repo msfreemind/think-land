@@ -55,7 +55,7 @@ const SideBar = ({ loggedIn, mode }) => {
               </Link>
             </li>
             <li>
-              <Link className={location.pathname.startsWith(path.newEssay) ? "active-route" : ""} to={path.newEssay}>
+              <Link className={location.pathname === path.newEssay ? "active-route" : ""} to={path.newEssay}>
                 New Essay
               </Link>
             </li>
