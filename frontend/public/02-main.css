@@ -1,6 +1,14 @@
+html {
+  padding-bottom: 20px;
+}
+
+body {
+  font-family: 'Mali', cursive;
+}
+
 .main {
   padding-top: 78px;
-  width: 1000px;
+  width: 1250px;
   height: calc(100% - 78px);
   margin: 0 auto;
 }

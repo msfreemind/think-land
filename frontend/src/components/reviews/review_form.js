@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
 import EssayShow from '../essays/essay_show';
+import * as FormUtil from '../../util/form_styling';
 import 'react-quill/dist/quill.snow.css';
 
 class ReviewForm extends React.Component {
@@ -16,8 +17,7 @@ class ReviewForm extends React.Component {
   }
 
   componentDidMount() {
-    document.getElementsByClassName("sidebar")[0].style.display = "none";
-    document.getElementsByClassName("main")[0].style.width = "100%";
+    FormUtil.enableFormStyling();
 
     if (this.props.actionType === "new") {
       this.props.clearActiveReview();
@@ -41,8 +41,7 @@ class ReviewForm extends React.Component {
   }
 
   componentWillUnmount() {
-    document.getElementsByClassName("sidebar")[0].style.display = "flex";
-    document.getElementsByClassName("main")[0].style.width = "1000px";
+    FormUtil.disableFormStyling();
   }
 
   populateState() {

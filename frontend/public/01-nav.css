@@ -57,6 +57,7 @@ i#sign-in, i#sign-out {
 
 .modes {
   border: 1px solid white;
+  border-radius: 7px;
   margin-right: 50px;
 }
 

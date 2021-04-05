@@ -1,19 +1,17 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
 import EssayShow from '../essays/essay_show';
+import * as FormUtil from '../../util/form_styling';
 import 'react-quill/dist/quill.bubble.css';
 
 class ReviewShow extends React.Component {
   componentDidMount() {
-    document.getElementsByClassName("sidebar")[0].style.display = "none";
-    document.getElementsByClassName("main")[0].style.width = "100%";
-
+    FormUtil.enableFormStyling();
     this.props.fetchReview(this.props.match.params.reviewId);
   }
 
   componentWillUnmount() {
-    document.getElementsByClassName("sidebar")[0].style.display = "flex";
-    document.getElementsByClassName("main")[0].style.width = "1000px";
+    FormUtil.disableFormStyling();
   }
 
   render() {

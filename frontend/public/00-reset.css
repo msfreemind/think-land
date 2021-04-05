@@ -2,7 +2,7 @@ html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, h3, p, form,
 fieldset, label, input, textarea,
-span, article, footer, time, small {
+span, article, footer, time, small, select {
   margin: 0;
   padding: 0;
   border: 0;
@@ -14,10 +14,6 @@ span, article, footer, time, small {
   vertical-align: inherit;
   box-sizing: inherit;
   background: transparent;
-}
-
-html, body, .top-main, #root {
-  height: 100%;
 }
 
 ul {

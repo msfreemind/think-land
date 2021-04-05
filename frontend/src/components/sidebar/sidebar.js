@@ -1,22 +1,65 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+
+const path = {
+  draftReviews: '/reviews/drafts',
+  submittedReviews: '/reviews',
+  essaysToReview: '/essays/reviewables',
+  draftEssays: '/essays/drafts',
+  submittedEssays: '/essays',
+  newEssay: '/essays/new'
+}
 
 const SideBar = ({ loggedIn, mode }) => {
+  const location = useLocation();
+
   if (loggedIn) {
     if (mode === "review") {
       return (
         <div className="sidebar col col-1-8">
-          <Link to={'/reviews/drafts'}>Drafts</Link>
-          <Link to={'/reviews'}>Reviews</Link>
-          <Link to={'/essays/reviewables'}>For Review</Link>
+          <h2>Review Mode</h2>
+
+          <ul>
+            <li>
+              <Link className={location.pathname === path.draftReviews ? "active-route" : ""} to={path.draftReviews}>
+                Drafts
+              </Link>
+            </li>
+            <li>
+              <Link className={location.pathname === path.submittedReviews ? "active-route" : ""} to={path.submittedReviews}> 
+                Reviews
+              </Link>
+            </li>
+            <li>
+              <Link className={location.pathname === path.essaysToReview ? "active-route" : ""} to={path.essaysToReview}>
+                For Review
+              </Link>
+            </li>
+          </ul>
         </div>
       );
     } else { // mode === "submit"
       return (
         <div className="sidebar col col-1-8">
-          <Link to={'/essays/drafts'}>Drafts</Link>
-          <Link to={'/essays'}>Submissions</Link>
-          <Link to={'/essays/new'}>New Essay</Link>
+          <h2>Essay Mode</h2>
+
+          <ul>
+            <li>
+              <Link className={location.pathname === path.draftEssays ? "active-route" : ""} to={path.draftEssays}>
+                Drafts
+              </Link>
+            </li>
+            <li>
+             <Link className={location.pathname === path.submittedEssays ? "active-route" : ""} to={path.submittedEssays}>
+                Submissions
+              </Link>
+            </li>
+            <li>
+              <Link className={location.pathname === path.newEssay ? "active-route" : ""} to={path.newEssay}>
+                New Essay
+              </Link>
+            </li>
+          </ul>
         </div>
       );
     }      
