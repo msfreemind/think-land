@@ -37,8 +37,9 @@
   margin-top: 8px;
 }
 
-.form-container .ql-editor {
+.form-container .ql-container {
   margin-bottom: 8px;
+  min-height: 18em;
 }
 
 .form-container select {

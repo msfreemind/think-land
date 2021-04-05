@@ -24,7 +24,7 @@ import SignupFormContainer from './session/signup_form_container';
 import NotFound from './not_found'
 
 const App = () => (
-  <div>
+  <div className="top-main">
     <NavBarContainer />
 
     <main className="main">

@@ -1,13 +1,18 @@
 .main {
   padding-top: 78px;
   width: 1000px;
+  height: calc(100% - 78px);
   margin: 0 auto;
 }
 
 .index {
-  padding-left: 20px;
-  /* display: flex;
-  justify-content: center; */
+  padding: 0 20px;
+}
+
+.index h1 {
+  font-weight: 700;
+  font-size: 36px;
+  padding-bottom: 20px;
 }
 
 .index h2 {

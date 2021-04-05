@@ -5,7 +5,7 @@ import 'react-quill/dist/quill.bubble.css';
 
 class EssayShow extends React.Component {
   componentDidMount() {
-    this.props.fetchEssay(this.props.match.params.essayId);
+    this.props.fetchEssay(this.props.essayId);
   }
 
   render() {

@@ -16,8 +16,8 @@ span, article, footer, time, small {
   background: transparent;
 }
 
-html {
-  overflow-y: scroll;
+html, body, .top-main, #root {
+  height: 100%;
 }
 
 ul {
