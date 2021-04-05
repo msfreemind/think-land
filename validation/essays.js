@@ -39,7 +39,7 @@ module.exports = function validateEssayInput(data) {
   }
 
   if (Validator.isEmpty(data.category)) {
-    errors.body = 'A category is required';
+    errors.body = 'Category is required';
   }
 
   return {

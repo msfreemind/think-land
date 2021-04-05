@@ -2,6 +2,10 @@ import React from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+const Font = ReactQuill.Quill.import('formats/font'); // <<<< ReactQuill exports it
+Font.whitelist = ['blah', 'roboto', 'mali'] ; // allow ONLY these fonts and the default
+ReactQuill.Quill.register(Font, true);
+
 class EssayForm extends React.Component {
   constructor(props) {
     super(props);
@@ -101,7 +105,7 @@ class EssayForm extends React.Component {
 
   modules = {
     toolbar: [
-      [{'font': []}],
+      [{'font': Font.whitelist }],
       [{ 'size': ['small', false, 'large', 'huge'] }],
       ['bold', 'italic', 'underline','strike', 'blockquote'],
       [{ 'align': [] }, {'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],

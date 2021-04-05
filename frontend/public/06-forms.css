@@ -90,3 +90,27 @@ form button:hover {
 input {
   padding: 5px 10px;
 }
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=roboto]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=roboto]::before {
+  content: "Roboto";
+  font-family: "roboto";
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=mali]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=mali]::before {
+  content: "Mali";
+  font-family: "mali";
+}
+
+.ql-font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.ql-font-mali {
+  font-family: 'Mali', cursive;
+}
+
+.ql-editor strong {
+  font-weight: 700;
+}
