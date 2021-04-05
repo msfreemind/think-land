@@ -19,20 +19,24 @@ class NavBar extends React.Component {
   }
 
   getLinks() {
-    if (this.props.loggedIn) {
+    const { loggedIn, logout, mode, currentUser } = this.props;
+
+    if (loggedIn) {
       return (
         <ul className="header-nav">
           <i onClick={this.uploadVideo} className="fas fa-cloud-upload-alt"/>
+          <i id="sign-out" onClick={logout} className="fas fa-sign-out-alt"/>
 
-          <i id="sign-out" onClick={this.props.logout} className="fas fa-sign-out-alt"/>
+          <div className="modes">
+            <li className={mode === "submit" ? "mode-active" : ""} onClick={this.enterSubmitMode}>Essay Mode</li>
+            <li className={mode === "review" ? "mode-active" : ""} onClick={this.enterReviewMode}>Review Mode</li>
+          </div>
 
           <li id="user-button">
-            <button>{this.props.currentUser.name} &nbsp; <div className="arrow-down"/></button>
+            <button>{currentUser.name} &nbsp; <div className="arrow-down"/></button>
 
             <ul id="user-dropdown">
-              <li onClick={this.enterSubmitMode}>Submit Mode</li>
-              <li onClick={this.enterReviewMode}>Review Mode</li>
-              <li onClick={this.props.logout}>Log Out</li>
+              <li onClick={logout}>Log Out</li>
             </ul>
           </li>
         </ul>
