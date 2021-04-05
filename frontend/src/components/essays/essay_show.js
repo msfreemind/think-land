@@ -16,8 +16,8 @@ class EssayShow extends React.Component {
         <h1>Reviews</h1>
 
         <ul>
-          { essay.reviews.length > 0 ? 
-            essay.reviews.map((review, idx) => <ReviewIndexItem key={idx} num={idx} review={review}/>) 
+          { essay.reviews.length > 0 
+            ? essay.reviews.map((review, idx) => <ReviewIndexItem key={idx} num={idx + 1} review={review}/>) 
             : <strong className="no-reviews">None.</strong>
           }
         </ul>
