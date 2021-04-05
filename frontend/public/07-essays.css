@@ -32,6 +32,10 @@
   margin-left: 20px;
 }
 
+.no-reviews {
+  margin-left: 20px;
+}
+
 .essay .review {
   text-decoration: underline;
   color: dodgerblue;

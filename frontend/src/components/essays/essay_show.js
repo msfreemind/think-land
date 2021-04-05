@@ -5,19 +5,24 @@ import 'react-quill/dist/quill.bubble.css';
 
 class EssayShow extends React.Component {
   componentDidMount() {
-    this.props.fetchEssay(this.props.essay._id);
+    if (this.props.match) this.props.fetchEssay(this.props.match.params.essayId);    
   }
 
   renderReviews() {
     const { essay } = this.props;
 
-    <div>
-      <h1>Reviews</h1>
+    return(
+      <div>
+        <h1>Reviews</h1>
 
-      <ul>
-        { essay.reviews.map((review, idx) => <ReviewIndexItem key={idx} num={idx} review={review}/>) }
-      </ul>
-    </div>
+        <ul>
+          { essay.reviews.length > 0 ? 
+            essay.reviews.map((review, idx) => <ReviewIndexItem key={idx} num={idx} review={review}/>) 
+            : <strong className="no-reviews">None.</strong>
+          }
+        </ul>
+      </div>
+    );
   }
 
   render() {

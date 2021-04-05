@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchEssay, fetchReviewableEssays } from '../../actions/essay_actions';
+import { fetchEssay } from '../../actions/essay_actions';
 import EssayShow from './essay_show';
 
 const mapStateToProps = (state, ownProps) => ({
