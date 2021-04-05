@@ -33,10 +33,12 @@ class EssayShow extends React.Component {
         <div className="essay col col-7-8">
           <h1>{ essay.subject }</h1>
           <h2>{ essay.theme }</h2>
+
           <div className="byline">
             By: {essay.author.firstName} {essay.author.lastName} &nbsp; | &nbsp; Category: {essay.category.name}
           </div>
-          <ReactQuill value={essay.body} readOnly={true} theme={"bubble"}/>
+
+          <ReactQuill value={essay.body} readOnly={true} theme="bubble"/>
 
           <br/>
 

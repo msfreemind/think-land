@@ -5,15 +5,14 @@ const ReviewIndexItem = ({ num, review, indexType }) => {
   if (num) {
     return (
       <li className="index-item">
-        {num + ". "} &nbsp;
+        {num + ". "}
         <Link to={ `/reviews/${review._id}` }>
           <strong className="review-item">
             {review.text.substring(0, 100).replace(/<\/?[^>]+(>|$)/g, "")}
             {" . . ."}       
           </strong>
         </Link>
-        &nbsp;
-        {" — Reviewer: " + review.reviewer.firstName + " " + review.reviewer.lastName }
+        {" —Reviewer: " + review.reviewer.firstName + " " + review.reviewer.lastName }
       </li>
     );
   } else {
