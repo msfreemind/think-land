@@ -7,6 +7,7 @@ import 'react-quill/dist/quill.bubble.css';
 class ReviewShow extends React.Component {
   componentDidMount() {
     FormUtil.enableFormStyling();
+    this.props.setMode("review");
     this.props.fetchReview(this.props.match.params.reviewId);
   }
 

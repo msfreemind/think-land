@@ -26,6 +26,7 @@ class ReviewForm extends React.Component {
 
   componentDidMount() {
     FormUtil.enableFormStyling();
+    this.props.setMode("review");
 
     if (this.props.actionType === "new") {
       this.props.clearActiveReview();

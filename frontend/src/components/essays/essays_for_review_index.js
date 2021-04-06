@@ -4,6 +4,7 @@ import EssayIndexItem from './essay_index_item';
 class EssaysForReviewIndex extends React.Component {
   componentDidMount() {
     this.props.fetchReviewableEssays();
+    this.props.setMode("review");
   }
 
   render() {

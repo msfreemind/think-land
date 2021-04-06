@@ -4,6 +4,7 @@ import ReviewIndexItem from './review_index_item';
 class ReviewIndex extends React.Component {
   componentDidMount() {
     this.props.fetchReviews();
+    this.props.setMode("review");
   }
 
   render() {
