@@ -21,7 +21,7 @@ class ReviewShow extends React.Component {
     if (review) {
       return (
         <div className="new-review">
-          <EssayShow essay={review.essay} fetchEssay={fetchEssay} showReviews={false} />
+          <EssayShow essay={review.essay} fetchEssay={fetchEssay} setMode={this.props.setMode} showReviews={false} />
 
           <div className="review">
             <h1>Reviewed By: { `${review.reviewer.firstName} ${review.reviewer.lastName}` }</h1>

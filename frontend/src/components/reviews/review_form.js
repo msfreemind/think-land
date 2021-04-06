@@ -119,7 +119,7 @@ class ReviewForm extends React.Component {
     if (this.props.actionType === "new" || (this.props.actionType === "edit" && this.state.formDataLoaded)) {
       return (
         <div className="new-review">
-          <EssayShow essay={this.props.essay || this.props.review.essay} showReviews={false}/>
+          <EssayShow essay={this.props.essay || this.props.review.essay} setMode={this.props.setMode} showReviews={false}/>
 
           <div className="form-container">
             <h1>New Review</h1>
