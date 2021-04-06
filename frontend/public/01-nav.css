@@ -66,8 +66,16 @@ i#sign-in, i#sign-out {
   text-decoration: underline;
 }
 
-@media all and (max-width: 675px) {
+@media all and (max-width: 1000px) {
   .modes {
     display: none;
+  }
+
+  .header-nav > li {
+    display: none;
+  }
+
+  .header i {
+    display: block;
   }
 }

@@ -24,7 +24,20 @@ class NavBar extends React.Component {
     if (loggedIn) {
       return (
         <ul className="header-nav">
-          <i onClick={this.uploadVideo} className="fas fa-cloud-upload-alt"/>
+          <div id="hamburger">
+            <i  className="fas fa-bars"/>
+            <ul id="user-dropdown2">
+              <li className="select-title">Essays</li>
+              <li className="selectable"><Link to="/essays/drafts">Drafts</Link></li>
+              <li className="selectable"><Link to="/essays">Submissions</Link></li>
+              <li className="selectable"><Link to="/essays/new">New Essay</Link></li>
+              <li className="select-title">Reviews</li>
+              <li className="selectable"><Link to="/reviews/drafts">Drafts</Link></li>
+              <li className="selectable"><Link to="/reviews">Submissions</Link></li>
+              <li className="selectable"><Link to="/essays/reviewables">For Review</Link></li>
+            </ul>
+          </div>
+          
           <i id="sign-out" onClick={logout} className="fas fa-sign-out-alt"/>
 
           <div className="modes">
