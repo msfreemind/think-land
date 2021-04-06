@@ -11,7 +11,10 @@ class DraftIndex extends React.Component {
       <div className="index col col-7-8">
         <h1>Draft Essays</h1>
         <ul>
-          { this.props.drafts.map((draft, idx) => <DraftIndexItem key={idx} draft={draft}/>) }
+          { this.props.drafts.length > 0
+            ? this.props.drafts.map((draft, idx) => <DraftIndexItem key={idx} draft={draft}/>) 
+            : <strong>None.</strong>
+          }
         </ul>
       </div>
     );
