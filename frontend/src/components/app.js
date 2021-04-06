@@ -52,6 +52,8 @@ const App = () => (
         <Route component={NotFound} />   
       </Switch>
     </main>
+
+    <footer>© 2021, Mark Swan</footer>
   </div>
 );
 

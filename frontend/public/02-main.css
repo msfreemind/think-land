@@ -1,10 +1,22 @@
 html {
-  padding-bottom: 20px;
+  height: 100vh;
   overflow-y: scroll;
 }
 
 body {
   font-family: 'Mali', cursive;
+}
+
+.top-main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  text-align: center;
+  font-weight: 700;
+  padding: 20px;
 }
 
 .main {
