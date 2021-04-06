@@ -1,5 +1,4 @@
 html {
-  height: 100vh;
   overflow-y: scroll;
 }
 
@@ -8,15 +7,17 @@ body {
 }
 
 .top-main {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 footer {
+  flex: 0 0 45px;
+  margin-top: auto;
   text-align: center;
   font-weight: 700;
-  padding: 20px;
+  padding-top: 20px;
 }
 
 .main {
