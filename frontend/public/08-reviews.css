@@ -9,7 +9,7 @@
 }
 
 .new-review .ql-toolbar {
-  margin: 8px 20px 0 20px;
+  margin: 0 20px;
 }
 
 .review .ql-container, .new-review .form-container .ql-container {
@@ -40,4 +40,8 @@
 .review .ql-container {
   border: 1px solid black;
   margin-left: 20px;
+}
+
+.new-review .draft-msg {
+  right: 20px;
 }

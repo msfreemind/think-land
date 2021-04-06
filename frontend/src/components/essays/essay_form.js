@@ -6,6 +6,10 @@ const Font = ReactQuill.Quill.import('formats/font'); // <<<< ReactQuill exports
 Font.whitelist = ['blah', 'roboto', 'mali'] ; // allow ONLY these fonts and the default
 ReactQuill.Quill.register(Font, true);
 
+const fontSizeStyle = ReactQuill.Quill.import('attributors/style/size');
+fontSizeStyle.whitelist = ['14px', '20px', '24px', '36px', '48px'];
+ReactQuill.Quill.register(fontSizeStyle, true);
+
 class EssayForm extends React.Component {
   constructor(props) {
     super(props);
@@ -106,7 +110,7 @@ class EssayForm extends React.Component {
   modules = {
     toolbar: [
       [{'font': Font.whitelist }],
-      [{ 'size': ['small', false, 'large', 'huge'] }],
+      [{ 'size': fontSizeStyle.whitelist }],
       ['bold', 'italic', 'underline','strike', 'blockquote'],
       [{ 'align': [] }, {'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
       [{ 'color': [] }, { 'background': [] }],
@@ -118,7 +122,7 @@ class EssayForm extends React.Component {
   render() {
     if (this.props.actionType === "new" || (this.props.actionType === "edit" && this.state.formDataLoaded)) {
       return (
-        <div className="col col-7-8 form-container">
+        <div className="col col-7-8 form-container new-essay">
           <h1>New Essay</h1>
   
           <form onSubmit={this.handleSubmit}>

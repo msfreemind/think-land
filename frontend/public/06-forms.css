@@ -25,6 +25,10 @@
   flex-direction: column;
 }
 
+.new-essay form {
+  width: inherit;
+}
+
 .form-container input {
   background: #fff;
   border: 1px solid #ccc;
@@ -94,13 +98,38 @@ input {
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value=roboto]::before,
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value=roboto]::before {
   content: "Roboto";
-  font-family: "roboto";
+  font-family: 'Roboto', sans-serif;
 }
 
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value=mali]::before,
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value=mali]::before {
   content: "Mali";
-  font-family: "mali";
+  font-family: 'Mali', cursive;
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="14px"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="14px"]::before {
+  content: "14";
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="20px"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="20px"]::before {
+  content: "20";
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="24px"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="24px"]::before {
+  content: "24";
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="36px"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="36px"]::before {
+  content: "36";
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="48px"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="48px"]::before {
+  content: "48";
 }
 
 .ql-font-roboto {
