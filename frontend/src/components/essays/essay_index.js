@@ -4,6 +4,7 @@ import EssayIndexItem from './essay_index_item';
 class EssayIndex extends React.Component {
   componentDidMount() {
     this.props.fetchEssays();
+    this.props.setMode("submit");
   }
 
   render() {

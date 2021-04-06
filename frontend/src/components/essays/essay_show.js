@@ -5,7 +5,8 @@ import 'react-quill/dist/quill.bubble.css';
 
 class EssayShow extends React.Component {
   componentDidMount() {
-    if (this.props.match) this.props.fetchEssay(this.props.match.params.essayId);    
+    if (this.props.match) this.props.fetchEssay(this.props.match.params.essayId);   
+    this.props.setMode("submit"); 
   }
 
   renderReviews() {

@@ -33,6 +33,7 @@ class EssayForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchCategories();
+    this.props.setMode("submit");
 
     if (this.props.actionType === "new") {
       this.props.clearActiveDraft();

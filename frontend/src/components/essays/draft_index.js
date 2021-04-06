@@ -4,6 +4,7 @@ import DraftIndexItem from './draft_index_item';
 class DraftIndex extends React.Component {
   componentDidMount() {
     this.props.fetchDrafts();
+    this.props.setMode("submit");
   }
 
   render() {
