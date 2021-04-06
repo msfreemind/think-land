@@ -131,8 +131,6 @@ class ReviewForm extends React.Component {
                 <strong className="draft-msg">{ this.state.draftMessage }</strong>
               </div>
     
-              <br/>
-    
               <button>Submit Review</button>
             </form>
           </div>

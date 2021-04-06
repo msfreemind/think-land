@@ -10,6 +10,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 footer {
@@ -24,7 +25,6 @@ footer {
   padding-top: 78px;
   width: 1250px;
   height: calc(100% - 78px);
-  margin: 0 auto;
 }
 
 .index {
@@ -49,4 +49,10 @@ footer {
 
 .index-item {
   margin-bottom: 15px;
+}
+
+@media all and (max-width: 1275px) {
+  .main {
+    width: 100%;
+  }
 }

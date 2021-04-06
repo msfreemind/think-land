@@ -65,3 +65,9 @@ i#sign-in, i#sign-out {
   color: gold;
   text-decoration: underline;
 }
+
+@media all and (max-width: 675px) {
+  .modes {
+    display: none;
+  }
+}

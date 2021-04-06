@@ -28,6 +28,7 @@
   height: 100%;
   overflow-y: scroll;
   box-sizing: content-box;
+  padding-bottom: 40px;
 }
 
 .review h1 {
@@ -44,4 +45,16 @@
 
 .new-review .draft-msg {
   right: 20px;
+}
+
+@media all and (max-width: 675px) {
+  .new-review {
+    flex-direction: column;
+  }
+
+  .new-review .essay, .new-review .form-container, .new-review .review {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
 }
