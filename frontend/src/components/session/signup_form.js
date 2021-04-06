@@ -15,6 +15,10 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearSessionErrors();
+  }
+
   handleInput(event) {
     this.setState({ [event.target.id]: event.target.value });
   }
@@ -35,24 +39,24 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="form-container">
+      <div className="signup form-container">
         <h1>Sign Up</h1>
 
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Email" onChange={this.handleInput} id="email" value={this.state.email}/>
-          {this.props.errors.email}
+          <strong className="error">{this.props.errors.email}</strong>
           
           <input type="text" placeholder="First Name" onChange={this.handleInput} id="firstName" value={this.state.firstName}/>
-          {this.props.errors.firstName}
+          <strong className="error">{this.props.errors.firstName}</strong>
 
           <input type="text" placeholder="Last Name" onChange={this.handleInput} id="lastName" value={this.state.lastName}/>
-          {this.props.errors.lastName}
+          <strong className="error">{this.props.errors.lastName}</strong>
 
           <input type="password" placeholder="Password" onChange={this.handleInput} id="password" value={this.state.password}/>
-          {this.props.errors.password}
+          <strong className="error">{this.props.errors.password}</strong>
 
           <input type="password" placeholder="Confirm Password" onChange={this.handleInput} id="password2" value={this.state.password2}/>
-          {this.props.errors.password2}
+          <strong className="error">{this.props.errors.password2}</strong>
 
           <br/>
 

@@ -9,6 +9,10 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearSessionErrors();
+  }
+
   handleInput(event) {
     this.setState({ [event.target.id]: event.target.value });
   }
@@ -30,15 +34,15 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="form-container">
-        <h1>Sign In</h1>
+        <h1>Log In</h1>
 
         <form onSubmit={this.handleSubmit}>
 
           <input type="text" placeholder="Email" onChange={this.handleInput} id="email" value={this.state.email}/>
-          {this.props.errors.email}
+          <strong className="error">{this.props.errors.email}</strong>
 
           <input type="password" placeholder="Password" onChange={this.handleInput} id="password" value={this.state.password}/>
-          {this.props.errors.password}
+          <strong className="error">{this.props.errors.password}</strong>
 
           <br/>
 
