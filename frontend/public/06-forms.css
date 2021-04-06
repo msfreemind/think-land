@@ -4,6 +4,11 @@
 
 .error {
   color: red;
+  margin-left: 5px;
+}
+
+.new-review .error {
+  margin-left: 20px;
 }
 
 .form-container {
@@ -29,12 +34,20 @@
   width: inherit;
 }
 
+.signup form {
+  width: 325px;
+}
+
 .form-container input {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 7px;
   color: #000;
-  margin: 8px 0px;
+  margin-top: 16px;
+}
+
+.form-container input:first-child {
+  margin-top: 8px;
 }
 
 .form-container select {
@@ -49,11 +62,10 @@
 }
 
 .form-container .ql-toolbar {
-  margin-top: 8px;
+  margin-top: 16px;
 }
 
 .form-container .ql-container {
-  margin-bottom: 8px;
   min-height: 18em;
 }
 

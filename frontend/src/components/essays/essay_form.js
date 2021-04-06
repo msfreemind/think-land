@@ -127,20 +127,18 @@ class EssayForm extends React.Component {
   
           <form onSubmit={this.handleSubmit}>
             <input type="text" placeholder="Subject" onChange={this.handleInput} id="subject" value={this.state.subject}/>
-            {this.props.essayErrors.subject}
-            {this.props.draftErrors.subject}
+            <strong className="error">{this.props.essayErrors.subject}</strong>
+            <strong className="error">{this.props.draftErrors.subject}</strong>
   
             <input type="text" placeholder="Theme" onChange={this.handleInput} id="theme" value={this.state.theme}/>
-            {this.props.essayErrors.theme}
-            {this.props.draftErrors.theme}
+            <strong className="error">{this.props.essayErrors.theme}</strong>
+            <strong className="error">{this.props.draftErrors.theme}</strong>
   
             <div className="editor-wrapper">
               <ReactQuill theme="snow" modules={this.modules} onChange={this.setBody} value={this.state.body}/>
-              {this.props.essayErrors.body}
+              <strong className="error">{this.props.essayErrors.body}</strong>
               <strong className="draft-msg">{ this.state.draftMessage }</strong>
             </div>
-  
-            <br/>
   
             <select onChange={this.handleInput} id="category" value={this.state.category}>
               <option value="">---- Select Category ----</option>
@@ -148,7 +146,7 @@ class EssayForm extends React.Component {
                 (category, idx) => <option key={idx} value={category._id}>{category.name}</option>
               )}
             </select>
-            {this.props.essayErrors.category}
+            <strong className="error">{this.props.essayErrors.category}</strong>
 
             <br/>
   
