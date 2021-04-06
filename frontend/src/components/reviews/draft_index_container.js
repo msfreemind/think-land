@@ -5,7 +5,7 @@ import { draftReviews } from '../../reducers/selectors';
 import ReviewIndex from './review_index';
 
 const mapStateToProps = state => ({
-  reviews: draftReviews(Object.values(state.entities.reviews)),
+  reviews: draftReviews(state),
   indexType: "draft"
 });
 
