@@ -4,6 +4,7 @@
 
 .error {
   color: red;
+  font-weight: 700;
   margin-left: 5px;
 }
 
@@ -35,7 +36,7 @@
 }
 
 .signup form {
-  width: 325px;
+  width: 340px;
 }
 
 .form-container input {
