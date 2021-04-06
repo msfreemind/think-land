@@ -23,7 +23,7 @@ router.get('/reviewables', passport.authenticate('jwt', { session: false }), (re
 });
 
 router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Essay.findOne({ _id: req.params.id, author: req.user }).lean()
+  Essay.findOne({ $or: [{ _id: req.params.id, author: req.user }, { category: { $in: req.user.expertiseCategories } }] }).lean()
     .populate({ path: 'author', select: 'firstName lastName' })
     .populate({ path: 'category', select: 'name' })
     .populate({ path: 'reviews', select: 'text', populate: { path: 'reviewer', select: 'firstName lastName'} })
