@@ -4,7 +4,7 @@ import DraftIndexItem from './draft_index_item';
 class DraftIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({ draftsLoaded: false });
+    this.state = { draftsLoaded: false };
   }
 
   componentDidMount() {

@@ -15,7 +15,7 @@ ReactQuill.Quill.register(fontSizeStyle, true);
 class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({ id: "", text: "", essayId: "", revieweeId: "", draftMessage: "", submitted: false, formDataLoaded: false });
+    this.state = { id: "", text: "", essayId: "", revieweeId: "", draftMessage: "", submitted: false, formDataLoaded: false };
 
     this.autoSaveTimeout = null;
 

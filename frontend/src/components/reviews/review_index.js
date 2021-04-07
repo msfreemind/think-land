@@ -4,7 +4,7 @@ import ReviewIndexItem from './review_index_item';
 class ReviewIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({ reviewsLoaded: false });
+    this.state = { reviewsLoaded: false };
   }
 
   componentDidMount() {

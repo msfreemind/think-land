@@ -4,7 +4,7 @@ import EssayIndexItem from './essay_index_item';
 class EssaysForReviewIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({ essaysLoaded: false });
+    this.state = { essaysLoaded: false };
   }
 
   componentDidMount() {

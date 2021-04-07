@@ -13,7 +13,7 @@ ReactQuill.Quill.register(fontSizeStyle, true);
 class EssayForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({
+    this.state = {
       id: "",
       subject: "", 
       theme: "", 
@@ -21,7 +21,7 @@ class EssayForm extends React.Component {
       category: "",
       draftMessage: "",
       formDataLoaded: false
-    });
+    };
 
     this.autoSaveTimeout = null;
 
