@@ -5,10 +5,15 @@ import * as FormUtil from '../../util/form_styling';
 import 'react-quill/dist/quill.bubble.css';
 
 class ReviewShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { reviewLoaded: false };
+  }
+
   componentDidMount() {
     FormUtil.enableFormStyling();
     this.props.setMode("review");
-    this.props.fetchReview(this.props.match.params.reviewId);
+    this.props.fetchReview(this.props.match.params.reviewId).then( () => this.setState({ reviewLoaded: true }));
   }
 
   componentWillUnmount() {
@@ -18,7 +23,7 @@ class ReviewShow extends React.Component {
   render() {
     const { review, fetchEssay } = this.props;
 
-    if (review) {
+    if (this.state.reviewLoaded) {
       return (
         <div className="new-review">
           <EssayShow essay={review.essay} fetchEssay={fetchEssay} setMode={this.props.setMode} showReviews={false} />

@@ -4,9 +4,19 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
 
 class EssayShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { essayLoaded: false };
+  }
+
   componentDidMount() {
-    if (this.props.match) this.props.fetchEssay(this.props.match.params.essayId);   
-    if (this.props.showReviews) this.props.setMode("submit"); 
+    if (this.props.showReviews) {
+      this.props.fetchEssay(this.props.match.params.essayId).then(
+        () => this.setState({ essayLoaded: true })
+      );
+
+      this.props.setMode("submit");
+    } 
   }
 
   renderReviews() {
@@ -29,7 +39,7 @@ class EssayShow extends React.Component {
   render() {
     const { essay, showReviews } = this.props;
 
-    if (essay) {
+    if (this.state.essayLoaded || (!showReviews && essay)) {
       return (
         <div className="essay col col-7-8">
           <h1>{ essay.subject }</h1>
