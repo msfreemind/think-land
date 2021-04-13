@@ -27,35 +27,37 @@ const App = () => (
   <div className="top-main">
     <NavBarContainer />
 
-    <main className="main">
-      <SideBarContainer />
+    <div className="page-content">
+      <main className="main">
+        <SideBarContainer />
 
-      <Switch>
-        <Route exact path="/"><Redirect to="/essays" /></Route>
+        <Switch>
+          <Route exact path="/"><Redirect to="/essays" /></Route>
 
-        <AuthRoute exact path="/login" component={LoginFormContainer} />
-        <AuthRoute exact path="/signup" component={SignupFormContainer} />
+          <AuthRoute exact path="/login" component={LoginFormContainer} />
+          <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
-        <ProtectedRoute exact path="/reviews" component={ReviewIndexContainer} />
-        <ProtectedRoute exact path="/reviews/drafts" component={ReviewDraftIndexContainer} />
-        <ProtectedRoute exact path="/essays/reviewables" component={EssaysForReviewIndexContainer} />
+          <ProtectedRoute exact path="/reviews" component={ReviewIndexContainer} />
+          <ProtectedRoute exact path="/reviews/drafts" component={ReviewDraftIndexContainer} />
+          <ProtectedRoute exact path="/essays/reviewables" component={EssaysForReviewIndexContainer} />
 
-        <ProtectedRoute path="/essays/:essayId/reviews/new" component={ReviewNewContainer} /> 
-        <ProtectedRoute path="/reviews/edit/:reviewId" component={ReviewEditContainer} /> 
-        <ProtectedRoute path="/reviews/:reviewId" component={ReviewShowContainer} /> 
+          <ProtectedRoute path="/essays/:essayId/reviews/new" component={ReviewNewContainer} /> 
+          <ProtectedRoute path="/reviews/edit/:reviewId" component={ReviewEditContainer} /> 
+          <ProtectedRoute path="/reviews/:reviewId" component={ReviewShowContainer} /> 
 
-        <ProtectedRoute exact path="/essays" component={EssayIndexContainer} />
-        <ProtectedRoute exact path="/essays/drafts" component={EssayDraftIndexContainer} />
+          <ProtectedRoute exact path="/essays" component={EssayIndexContainer} />
+          <ProtectedRoute exact path="/essays/drafts" component={EssayDraftIndexContainer} />
 
-        <ProtectedRoute exact path="/essays/new" component={EssayNewContainer} />
-        <ProtectedRoute path="/essays/edit/:draftId" component={EssayEditContainer} />
-        <ProtectedRoute path="/essays/:essayId" component={EssayShowContainer} />
-        
-        <Route component={NotFound} />   
-      </Switch>
-    </main>
+          <ProtectedRoute exact path="/essays/new" component={EssayNewContainer} />
+          <ProtectedRoute path="/essays/edit/:draftId" component={EssayEditContainer} />
+          <ProtectedRoute path="/essays/:essayId" component={EssayShowContainer} />
+          
+          <Route component={NotFound} />   
+        </Switch>
+      </main>
 
-    <footer>© 2021, Mark Swan</footer>
+      <footer>© 2021, Mark Swan</footer>
+    </div>
   </div>
 );
 

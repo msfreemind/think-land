@@ -9,17 +9,15 @@ export const enableFormStyling = () => {
 
 const formStylingCallback = () => {
   if (window.innerWidth > 675) {
-    document.getElementsByTagName("html")[0].style.height = "100%";
-    document.getElementsByTagName("html")[0].style.overflow = "hidden";
-    document.getElementsByTagName("body")[0].style.height = "100%";
-    document.getElementsByClassName("top-main")[0].style.height = "100%";
-    document.getElementById("root").style.height = "100%";
+    document.getElementsByClassName("page-content")[0].style.overflow = "hidden";
+    document.getElementsByClassName("page-content")[0].style.height = "100%";
+    document.getElementsByClassName("main")[0].style.height = "100%";
+    document.getElementsByClassName("main")[0].style.padding = "0";
   } else {    
-    document.getElementsByTagName("html")[0].style.height = "";
-    document.getElementsByTagName("html")[0].style.overflowY = "";
-    document.getElementsByTagName("body")[0].style.height = "";
-    document.getElementsByClassName("top-main")[0].style.minHeight = "";
-    document.getElementById("root").style.height = "";
+    document.getElementsByClassName("page-content")[0].style.overflowY = "";
+    document.getElementsByClassName("page-content")[0].style.height = "";
+    document.getElementsByClassName("main")[0].style.height = "";
+    document.getElementsByClassName("main")[0].style.padding = "";
   }
 }
 
@@ -30,9 +28,8 @@ export const disableFormStyling = () => {
   document.getElementsByClassName("main")[0].style.width = "";  
   document.getElementsByTagName("footer")[0].style.display = "";
 
-  document.getElementsByTagName("html")[0].style.height = "";
-  document.getElementsByTagName("html")[0].style.overflowY = "";
-  document.getElementsByTagName("body")[0].style.height = "";
-  document.getElementsByClassName("top-main")[0].style.minHeight = "";
-  document.getElementById("root").style.height = "";
+  document.getElementsByClassName("page-content")[0].style.overflowY = "";
+  document.getElementsByClassName("page-content")[0].style.height = "";
+  document.getElementsByClassName("main")[0].style.height = "";
+  document.getElementsByClassName("main")[0].style.padding = "";
 }

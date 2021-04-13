@@ -1,16 +1,30 @@
 html {
-  overflow-y: scroll;
+  overflow: hidden;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
 }
 
 body {
   font-family: 'Mali', cursive;
+  height: 100%;
 }
 
 .top-main {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.page-content {
+  min-height: calc(100vh - 61px);
+  margin-top: 61px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
 }
 
 footer {
@@ -22,9 +36,8 @@ footer {
 }
 
 .main {
-  padding-top: 78px;
+  padding-top: 17px;
   width: 1250px;
-  height: calc(100% - 78px);
 }
 
 .index {

@@ -21,6 +21,7 @@
   height: 100%;
   overflow-y: scroll;
   box-sizing: content-box;
+  padding-top: 17px;
 }
 
 .new-review .form-container, .new-review .review {
@@ -29,6 +30,7 @@
   overflow-y: scroll;
   box-sizing: content-box;
   padding-bottom: 40px;
+  padding-top: 17px;
 }
 
 .review h1 {
@@ -56,5 +58,6 @@
     width: 100%;
     height: auto;
     overflow: hidden;
+    padding-top: 0;
   }
 }
