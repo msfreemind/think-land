@@ -12,26 +12,28 @@ class ReviewIndex extends React.Component {
     this.props.setMode("review");
   }
 
-  render() {
-    const { indexType } = this.props;
+  printReviews() {
+    const { indexType, reviews } = this.props;
 
-    if (this.state.reviewsLoaded) {
+
+    if (reviews.length > 0) {
       return (
-        <div className="index col col-7-8">
-          <h1>{ indexType === "draft" ? "Draft" : "Submitted" } Reviews</h1>
-          <ul>
-            { this.props.reviews.length > 0
-              ? this.props.reviews.map((review, idx) => <ReviewIndexItem key={idx} indexType={indexType} review={review}/>) 
-              : <strong>None.</strong>
-            }
-          </ul>
-        </div>
+        <ul>
+          { reviews.map((review, idx) => <ReviewIndexItem key={idx} indexType={indexType} review={review}/>) }
+        </ul>
       );
     } else {
-      return (
-        <div></div>
-      );
-    }    
+      return this.state.reviewsLoaded ? "None." : "";
+    }
+  }
+
+  render() {
+    return (
+      <div className="index col col-7-8">
+        <h1>{ this.props.indexType === "draft" ? "Draft" : "Submitted" } Reviews</h1>
+        { this.printReviews() }
+      </div>
+    );  
   }  
 };
 

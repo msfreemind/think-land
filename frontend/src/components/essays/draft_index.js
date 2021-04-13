@@ -12,24 +12,25 @@ class DraftIndex extends React.Component {
     this.props.setMode("submit");
   }
 
-  render() {
-    if (this.state.draftsLoaded) {
+  printDrafts() {
+    if (this.props.drafts.length > 0) {
       return (
-        <div className="index col col-7-8">
-          <h1>Draft Essays</h1>
-          <ul>
-            { this.props.drafts.length > 0
-              ? this.props.drafts.map((draft, idx) => <DraftIndexItem key={idx} draft={draft}/>) 
-              : <strong>None.</strong>
-            }
-          </ul>
-        </div>
+        <ul>
+          { this.props.drafts.map((draft, idx) => <DraftIndexItem key={idx} draft={draft}/>) }
+        </ul>
       );
     } else {
-      return (
-        <div></div>
-      );  
-    }    
+      return this.state.draftsLoaded ? "None." : "";
+    }
+  }
+
+  render() {
+    return (
+      <div className="index col col-7-8">
+        <h1>Draft Essays</h1>
+        { this.printDrafts() }
+      </div>
+    );   
   }  
 };
 

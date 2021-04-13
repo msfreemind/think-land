@@ -12,24 +12,25 @@ class EssayIndex extends React.Component {
     this.props.setMode("submit");
   }
 
-  render() {
-    if (this.state.essaysLoaded) {
+  printEssays() {
+    if (this.props.essays.length > 0) {
       return (
-        <div className="index col col-7-8">
-          <h1>Submitted Essays</h1>
-          <ul>
-            { this.props.essays.length > 0
-              ? this.props.essays.map((essay, idx) => <EssayIndexItem key={idx} essay={essay}/>) 
-              : <strong>None.</strong>
-            }
-          </ul>
-        </div>
+        <ul>
+          { this.props.essays.map((essay, idx) => <EssayIndexItem key={idx} essay={essay}/>) }
+        </ul>
       );
     } else {
-      return (
-        <div></div>
-      );
+      return this.state.essaysLoaded ? "None." : "";
     }
+  }
+
+  render() {
+    return (
+      <div className="index col col-7-8">
+        <h1>Submitted Essays</h1>
+        { this.printEssays() }
+      </div>
+    );
   }  
 };
 

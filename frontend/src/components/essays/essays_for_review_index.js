@@ -12,24 +12,25 @@ class EssaysForReviewIndex extends React.Component {
     this.props.setMode("review");
   }
 
-  render() {
-    if (this.state.essaysLoaded) {
+  printEssays() {
+    if (this.props.reviewables.length > 0) {
       return (
-        <div className="index col col-7-8">
-          <h1>Essays for Review</h1>
-          <ul>
-            { this.props.reviewables.length > 0
-              ? this.props.reviewables.map((essay, idx) => <EssayIndexItem key={idx} essay={essay} doReview={true}/>)
-              : <strong>None.</strong>
-            }
-          </ul>
-        </div>
+        <ul>
+          { this.props.reviewables.map((essay, idx) => <EssayIndexItem key={idx} essay={essay} doReview={true}/>) }
+        </ul>
       );
     } else {
-      return (
-        <div></div>
-      );
+      return this.state.essaysLoaded ? "None." : "";
     }
+  }
+
+  render() {
+    return (
+      <div className="index col col-7-8">
+        <h1>Essays for Review</h1>
+        { this.printEssays() }
+      </div>
+    );
   }  
 };
 
