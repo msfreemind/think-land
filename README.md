@@ -3,9 +3,9 @@
 
 ## Theory
 
-In his course "Philosophy of Education," Dr. Leonard Peikoff stresses the need for students to submit essays, in each class, as an indispensable means of training them in proper thinking methods. He believes that writing, as opposed to speaking, is the only means of fully organizing your thoughts on a complex subject since there are too many aspects to a complex subject for speaking to enable someone to keep those aspects separate and identifiable.
+In his course "Philosophy of Education," Dr. Leonard Peikoff stresses the need for students to submit essays, in each class, as an indispensable means of training them in proper thinking methods. He believes that writing, as opposed to speaking, is the only means of fully organizing your thoughts on a complex subject since there are too many aspects to a complex subject for mere speaking to allow someone to keep those aspects separate and identifiable.
 
-In his view, both the act of expressing one's thoughts in writing, but also having this writing scrutinized by people with proper thinking methods and some grasp of the subject, was crucial. Only through extensive writing and having one's writing scrutinized can someone be trained in intellectual rigor and, therefore, in proper thinking methods.
+In his view, both the act of expressing one's thoughts in writing, but also having this writing scrutinized by people with proper thinking methods and some grasp of the subject, was crucial. Only through extensive writing and having this writing scrutinized can someone be trained in intellectual rigor and, therefore, in how to think properly.
 
 Needless to say, very few people have gone through this kind of training and, as a result, many adults have difficulties organizing their thoughts and communicating them.
 
@@ -13,15 +13,15 @@ The purpose of this website is to provide a platform in which adults can improve
 
 ## Technologies Used
 
-The frontend is written within a React/Redux framework to allow for fast site navigation; the backend is Express on top of MongoDB. Express responds with JSON in response to Axios requests.
+The frontend is written within a React/Redux framework to allow for fast site navigation; the backend uses the Express framework on top of MongoDB. Express responds with JSON in response to Axios requests.
 
 ## Reviewing Essays
 
-Reason Lift! has two modes: essay submission mode and essay review mode. In "Review Mode," the split-screen view shown below allows the user to view simultaneously both the essay he is reviewing along with the review he is writing:
+Reason Lift! has two modes: essay submission mode and essay review mode. In "Review Mode," the split-screen view shown below allows the user to view, at the same time, both the essay he is reviewing along with the review he is writing:
 
 ![rl-small-preview](https://user-images.githubusercontent.com/2721658/115614566-1b88f580-a2ab-11eb-97b6-0160182b0d33.png)
 
-The ability to view both components simultaneously and to scroll them independently is key, I think, to making a great user experience for the reviewers. This way, the reviewer doesn't need to switch between tabs, have multiple windows open or print physical copies of the essay in order to see everything he's working on. This functionality was achieved partly through CSS that is invoked upon mounting/unmounting of the React components responsible for the essay review pages.
+The ability to view both components simultaneously and to scroll them independently is key to having a great user experience for the reviewers. This way, the reviewer doesn't need to switch between tabs, have multiple windows open or print physical copies of the essay in order to see everything he's working on. This functionality was achieved partly through CSS that is invoked upon mounting/unmounting of the React components responsible for the essay review pages.
 
 ```javascript
 componentDidMount() {
