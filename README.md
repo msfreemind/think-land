@@ -17,7 +17,7 @@ The frontend is written within a React/Redux framework to allow for fast site na
 
 ## Reviewing Essays
 
-Reason Lift! has two modes: essay submission mode and essay review mode. In "Review Mode," the split-screen view shown below allows the user to view, at the same time, both the essay he is reviewing along with the review he is writing:
+Reason Lift! has two modes: essay submission mode and essay review mode. In "Review Mode," the split-screen view shown below allows the user to view, at the same time, both the essay being reviewed and the review he is writing:
 
 ![rl-small-preview](https://user-images.githubusercontent.com/2721658/115614566-1b88f580-a2ab-11eb-97b6-0160182b0d33.png)
 
