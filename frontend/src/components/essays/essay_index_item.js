@@ -12,8 +12,18 @@ const EssayIndexItem = ({ essay, doReview }) => {
   } else {
     return (
       <li className="index-item">
-        <Link to={ `/essays/${essay._id}` }><h2>{ essay.theme }</h2></Link> 
-        <small>Review: Blah, by James Bond</small>
+        <Link to={ `/essays/${essay._id}` }><h2>{ essay.theme }</h2></Link>
+        <strong>Review: </strong>
+        { essay.reviews.length > 0 
+          ? <Link to={ `/reviews/${essay.reviews[0]._id}` }>
+              <strong className="review-item"> 
+                { essay.reviews[0].text.substring(0, 75).replace(/<\/?[^>]+(>|$)/g, "") }
+                { " . . ." }
+                { ` —Reviewer: ` + essay.reviews[0].reviewer.firstName + " " + essay.reviews[0].reviewer.lastName }
+              </strong>
+            </Link>            
+          : <strong>None</strong>
+        }
       </li>
     );
   } 

@@ -64,6 +64,15 @@ footer {
   margin-bottom: 15px;
 }
 
+.index-item .review-item {
+  font-weight: 700;
+  /* text-decoration: underline; */
+}
+
+.index-item .review-item:hover {
+  text-decoration: underline;
+}
+
 @media all and (max-width: 1275px) {
   .main {
     width: 100%;
