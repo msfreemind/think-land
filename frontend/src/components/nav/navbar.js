@@ -6,6 +6,7 @@ class NavBar extends React.Component {
     super(props);
     this.enterSubmitMode = this.enterSubmitMode.bind(this);
     this.enterReviewMode = this.enterReviewMode.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   enterSubmitMode() {
@@ -16,6 +17,14 @@ class NavBar extends React.Component {
   enterReviewMode() {
     this.props.setMode("review");
     this.props.history.push('/reviews');
+  }
+
+  demoLogin(e) {
+    e.preventDefault();
+
+    this.props.login({ email: "guest@reasonlift.com", password: "password" }).then(
+      () => this.props.history.push('/essays')
+    );
   }
 
   getLinks() {
@@ -60,6 +69,7 @@ class NavBar extends React.Component {
           <Link to="/signup"><i className="fas fa-user-plus"/></Link>
           <Link to="/login"><i id="sign-in" className="fas fa-sign-in-alt"/></Link>
 
+          <button className="demo" onClick={this.demoLogin}>DEMO</button>
           <li><Link to="/signup">Sign Up</Link></li>
           <li><Link to="/login">Log In</Link></li>
         </ul>

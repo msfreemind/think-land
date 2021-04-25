@@ -66,6 +66,19 @@ i#sign-in, i#sign-out {
   text-decoration: underline;
 }
 
+.demo {
+  font-weight: 700;
+  margin-right: 15px;
+  padding: 5px 20px;
+  color: yellow;
+  border: 2px solid yellow;
+}
+
+.demo:hover {
+  color: white;
+  border: 2px solid white;
+}
+
 @media all and (max-width: 1000px) {
   .modes {
     display: none;
