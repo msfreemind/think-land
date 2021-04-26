@@ -1,6 +1,10 @@
 # Reason Lift!
 [Reason Lift!](https://www.reasonlift.com "Reason Lift!") is a platform for improving one's thinking on particular subjects by submitting essays for review by experts.
 
+## Demo Account
+
+To see a demonstration of the functionality with a demo account, visit the website and click on the "DEMO" link in the navbar.
+
 ## Theory
 
 In his course "Philosophy of Education," Dr. Leonard Peikoff stresses the need for students to submit essays, in each class, as an indispensable means of training them in proper thinking methods. He believes that writing, as opposed to speaking, is the only means of fully organizing your thoughts on a complex subject since there are too many aspects to a complex subject for mere speaking to allow someone to keep those aspects separate and identifiable.
