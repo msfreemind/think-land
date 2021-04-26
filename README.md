@@ -3,7 +3,7 @@
 
 ## Demo Account
 
-To see a demonstration of the functionality with a demo account, visit the website and click on the "DEMO" link in the navbar.
+To see a demonstration of the functionality, visit the website and click on the "DEMO" link in the navbar.
 
 ## Theory
 
