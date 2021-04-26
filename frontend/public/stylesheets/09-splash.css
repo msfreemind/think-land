@@ -1,0 +1,112 @@
+.splash-main {
+  overflow-y: scroll;
+}
+
+.splash-main footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color:ivory;
+}
+
+.splash {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.first-splash {
+  margin-top: 61px;
+  background-color:ivory;
+}
+
+.splash-buttons button {
+  margin: 0 20px;
+}
+
+.demo-button {
+  background-color: yellow;
+  font-size: 18px;
+  font-weight: 700;
+  color: black;
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: max-content;
+  padding: 5px 10px;
+  margin: 0 auto;
+}
+
+.demo-button:hover {
+  background-color: white;
+}
+
+.second-splash {
+  padding: 40px;
+}
+
+.splash-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  flex-grow: 1;
+}
+
+.splash-main h1 {
+  font-weight: 700;
+  font-size: 64px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.splash-main h2 {
+  font-size: 32px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.splash img {
+  width: 50%;
+}
+
+.splash-bottom {
+  display: flex;
+  flex-direction: column;
+  background-color:ivory;
+  padding: 100px;
+}
+
+@media all and (max-width: 1240px) {
+  .splash-main-img {
+    display: none;
+  }
+
+  .second-splash {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  .second-splash img {
+    width: 100%;
+  }
+
+  .splash-heading, .splash-bottom {
+    padding: 20px;
+  }
+}
+
+@media all and (max-width: 820px) {
+  .splash-main h1 {
+    font-size: 32px;
+  }
+  
+  .splash-main h2 {
+    font-size: 16px;
+  }
+
+  .join-button, .demo-button {
+    font-size: 14px;
+  }
+}

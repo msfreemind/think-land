@@ -1,0 +1,63 @@
+.new-review {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+}
+
+.new-review form {
+  width: 100%;
+}
+
+.new-review .ql-toolbar {
+  margin: 0 20px;
+}
+
+.review .ql-container, .new-review .form-container .ql-container {
+  margin: 0 20px 8px 20px;
+}
+
+.new-review .essay {
+  width: 40%;
+  height: 100%;
+  overflow-y: scroll;
+  box-sizing: content-box;
+  padding-top: 17px;
+}
+
+.new-review .form-container, .new-review .review {
+  width: 60%;
+  height: 100%;
+  overflow-y: scroll;
+  box-sizing: content-box;
+  padding-bottom: 40px;
+  padding-top: 17px;
+}
+
+.review h1 {
+  font-weight: 700;
+  font-size: 30px;
+  padding-bottom: 15px;
+  margin-left: 20px;
+}
+
+.review .ql-container {
+  border: 1px solid black;
+  margin-left: 20px;
+}
+
+.new-review .draft-msg {
+  right: 20px;
+}
+
+@media all and (max-width: 675px) {
+  .new-review {
+    flex-direction: column;
+  }
+
+  .new-review .essay, .new-review .form-container, .new-review .review {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding-top: 0;
+  }
+}

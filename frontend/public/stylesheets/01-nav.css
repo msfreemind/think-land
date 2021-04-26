@@ -1,0 +1,94 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: dodgerblue;
+  color: #fff;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+}
+
+.header h1 {
+  font-size: 30px;
+  font-weight: 700;
+  padding: 10px 10px 10px 20px;
+}
+
+.header-nav, .modes {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.header-nav > li, .modes > li {
+  padding: 8px 10px;
+  width: max-content;
+  box-sizing: border-box;
+}
+
+.modes > li {
+  font-weight: 700;
+}
+
+.header-nav > li:hover, .modes > li:hover {
+  cursor: pointer;
+}
+
+.header-nav > li:last-child {
+  padding-right: 20px;
+}
+
+.header-nav button {
+  display: flex;
+  align-items: center;
+}
+
+.header i {
+  display: none;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+i#sign-in, i#sign-out {
+  padding-right: 20px;
+}
+
+.modes {
+  border: 1px solid white;
+  border-radius: 7px;
+  margin-right: 50px;
+}
+
+.mode-active {
+  color: gold;
+  text-decoration: underline;
+}
+
+.demo {
+  font-weight: 700;
+  margin-right: 15px;
+  padding: 5px 20px;
+  color: yellow;
+  border: 2px solid yellow;
+}
+
+.demo:hover {
+  color: white;
+  border: 2px solid white;
+}
+
+@media all and (max-width: 1000px) {
+  .modes {
+    display: none;
+  }
+
+  .header-nav > li, .header-nav > button {
+    display: none;
+  }
+
+  .header i {
+    display: block;
+  }
+}

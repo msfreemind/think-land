@@ -49,7 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
       case 90:
       case -90: 
         window.location.reload(); 
-        break; 
+        break;
+
+      default:
+        break;
     } 
   };
 

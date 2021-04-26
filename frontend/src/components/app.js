@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 
 import NavBarContainer from './nav/navbar_container';
 import SideBarContainer from './sidebar/sidebar_container';
@@ -22,43 +22,50 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 
 import NotFound from './not_found'
+import SplashContainer from './splash_container';
 
-const App = () => (
-  <div className="top-main">
-    <NavBarContainer />
+const App = () =>  {
+  const location = useLocation();
 
-    <div className="page-content">
-      <main className="main">
-        <SideBarContainer />
+  return (
+    <div className="top-main">
+      <NavBarContainer />
 
-        <Switch>
-          <Route exact path="/"><Redirect to="/essays" /></Route>
+      { location.pathname === "/"
+        ? <SplashContainer/>
+        :
+        <div className="page-content">
+          <main className="main">
+            <SideBarContainer />
 
-          <AuthRoute exact path="/login" component={LoginFormContainer} />
-          <AuthRoute exact path="/signup" component={SignupFormContainer} />
+            <Switch>
+              <AuthRoute exact path="/login" component={LoginFormContainer} />
+              <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
-          <ProtectedRoute exact path="/reviews" component={ReviewIndexContainer} />
-          <ProtectedRoute exact path="/reviews/drafts" component={ReviewDraftIndexContainer} />
-          <ProtectedRoute exact path="/essays/reviewables" component={EssaysForReviewIndexContainer} />
+              <ProtectedRoute exact path="/reviews" component={ReviewIndexContainer} />
+              <ProtectedRoute exact path="/reviews/drafts" component={ReviewDraftIndexContainer} />
+              <ProtectedRoute exact path="/essays/reviewables" component={EssaysForReviewIndexContainer} />
 
-          <ProtectedRoute path="/essays/:essayId/reviews/new" component={ReviewNewContainer} /> 
-          <ProtectedRoute path="/reviews/edit/:reviewId" component={ReviewEditContainer} /> 
-          <ProtectedRoute path="/reviews/:reviewId" component={ReviewShowContainer} /> 
+              <ProtectedRoute path="/essays/:essayId/reviews/new" component={ReviewNewContainer} /> 
+              <ProtectedRoute path="/reviews/edit/:reviewId" component={ReviewEditContainer} /> 
+              <ProtectedRoute path="/reviews/:reviewId" component={ReviewShowContainer} /> 
 
-          <ProtectedRoute exact path="/essays" component={EssayIndexContainer} />
-          <ProtectedRoute exact path="/essays/drafts" component={EssayDraftIndexContainer} />
+              <ProtectedRoute exact path="/essays" component={EssayIndexContainer} />
+              <ProtectedRoute exact path="/essays/drafts" component={EssayDraftIndexContainer} />
 
-          <ProtectedRoute exact path="/essays/new" component={EssayNewContainer} />
-          <ProtectedRoute path="/essays/edit/:draftId" component={EssayEditContainer} />
-          <ProtectedRoute path="/essays/:essayId" component={EssayShowContainer} />
-          
-          <Route component={NotFound} />   
-        </Switch>
-      </main>
+              <ProtectedRoute exact path="/essays/new" component={EssayNewContainer} />
+              <ProtectedRoute path="/essays/edit/:draftId" component={EssayEditContainer} />
+              <ProtectedRoute path="/essays/:essayId" component={EssayShowContainer} />
+              
+              <Route component={NotFound} />   
+            </Switch>
+          </main>
 
-      <footer>© 2021, Mark Swan</footer>
+          <footer>© 2021, Mark Swan</footer>
+        </div>
+      }
     </div>
-  </div>
-);
+  );
+};
 
 export default App;
