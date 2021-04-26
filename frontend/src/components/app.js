@@ -61,7 +61,7 @@ const App = () =>  {
             </Switch>
           </main>
 
-          <footer>© 2021, Mark Swan</footer>
+          <footer>© 2021, Reason Lift!</footer>
         </div>
       }
     </div>
